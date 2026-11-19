@@ -2,11 +2,24 @@
 
 High-end, bespoke appointment booking platform for **SalonBook**, designed with warm alabaster (`#FAF8F5`), deep espresso (`#1C1917`), and muted rose-gold (`#B76E79`) accents.
 
+## Live Production Links & Repositories
+- **Production Web Application:** [https://salonbook-booking.vercel.app](https://salonbook-booking.vercel.app)
+- **Production API URL:** [https://salonbook-api.vercel.app](https://salonbook-api.vercel.app)
+- **Frontend GitHub Repository:** [https://github.com/fahad1420/salonbook-client](https://github.com/fahad1420/salonbook-client)
+- **Backend GitHub Repository:** [https://github.com/fahad1420/salonbook-server](https://github.com/fahad1420/salonbook-server)
+
+### Demo Credentials
+- **Salon Director (Admin):** `admin@salonbook.com` / `Password123!`
+- **Client (Customer):** `vivienne@example.com` / `Password123!`
+
+---
+
 ## Tech Stack
-- **Framework:** Next.js (App Router) with TypeScript (Strict Mode)
+- **Framework:** Next.js 14 (App Router) with TypeScript (Strict Mode)
 - **Styling:** Tailwind CSS with custom luxury editorial palette
 - **Icons:** Lucide Icons
 - **Notifications:** Sonner Toast Notifications
+- **Authentication:** Custom JWT Bearer Auth & Google OAuth
 - **Deployment:** Vercel
 
 ## Core Application Modules
@@ -20,17 +33,17 @@ High-end, bespoke appointment booking platform for **SalonBook**, designed with 
 
 ### 2. Client Authentication & Booking
 - **Sign In (`/sign-in`):** Email & Password, Google OAuth, and instant demo account autofill.
-- **Sign Up (`/sign-up`):** Password security checklist, ImgBB photo upload, and customer role assignment.
+- **Sign Up (`/sign-up`):** Password security checklist (min 6 chars, 1 uppercase, 1 lowercase), ImgBB photo upload, and customer role assignment.
 - **Service Details & Booking (`/services/[id]`):** Authentication guard, predefined salon time slots, duplicate slot conflict rejection, and pending reservation creation.
 
 ### 3. Customer Dashboard (`/dashboard/customer`)
 - **Overview:** Metric cards (Total Requests, Pending, Confirmed, Cancelled).
 - **My Appointments:** Filter tabs, view details modal, self-cancellation for pending bookings, and Stripe Checkout Pay Now trigger.
-- **My Profile:** Safe profile editing with ImgBB avatar upload.
+- **My Profile:** Safe profile editing with ImgBB avatar upload (no privilege escalation).
 
 ### 4. Admin Command Center (`/dashboard/admin`)
 - **Overview:** Salon KPIs, active services, pending reviews, confirmed appointments, and gross revenue metrics.
-- **Manage Services:** Full catalog overview, active/inactive status toggle, edit modal, delete with confirmation, and **mandatory ImgBB file upload input only**.
+- **Manage Services:** Full catalog overview, active/inactive status toggle, edit modal, delete with confirmation, and **mandatory ImgBB file upload input only (no raw URL input)**.
 - **Manage Appointments:** Confirm pending bookings or cancel appointments with confirmation dialogs.
 - **Manage Clients:** Registered customer list with instant account suspension/reactivation toggles.
 - **Financial Ledger:** Read-only Stripe transaction ledger with masked session IDs.
@@ -42,7 +55,7 @@ High-end, bespoke appointment booking platform for **SalonBook**, designed with 
 
 ## Environment Variables (`.env.local`)
 ```bash
-NEXT_PUBLIC_API_URL=http://localhost:5000/api
+NEXT_PUBLIC_API_URL=https://salonbook-api.vercel.app/api
 NEXT_PUBLIC_IMGBB_API_KEY=your_imgbb_api_key
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
 ```
