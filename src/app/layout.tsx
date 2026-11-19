@@ -1,20 +1,7 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from 'sonner';
 import { AuthProvider } from '@/context/AuthContext';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'SalonBook — Luxury Salon & Spa Appointment Booking',
@@ -28,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-alabaster-100 text-espresso-900 flex flex-col antialiased selection:bg-champagne-500 selection:text-white">
+    <html lang="en">
+      <body className="min-h-screen bg-alabaster-100 text-espresso-900 flex flex-col antialiased selection:bg-champagne-500 selection:text-white font-sans">
         <AuthProvider>
           {children}
           <Toaster
