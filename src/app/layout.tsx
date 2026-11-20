@@ -6,7 +6,10 @@ import { AuthProvider } from '@/context/AuthContext';
 export const metadata: Metadata = {
   title: 'SalonBook — Luxury Salon & Spa Appointment Booking',
   description:
-    'Experience refined artistry and bespoke salon treatments. Reserve your luxury appointment with top master stylists.',
+    'Experience bespoke beauty artistry and restorative spa therapies. Reserve your private session with certified European master stylists.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
@@ -25,9 +28,11 @@ export default function RootLayout({
             theme="light"
             toastOptions={{
               style: {
-                background: '#FAF8F5',
-                color: '#1C1917',
-                border: '1px solid #EAE1D7',
+                background: '#FAF7F2',
+                color: '#1E1B18',
+                border: '1px solid #E8E0D5',
+                boxShadow: '0 10px 30px -5px rgba(30, 27, 24, 0.08)',
+                fontFamily: 'inherit',
               },
             }}
           />
