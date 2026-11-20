@@ -76,8 +76,9 @@ export default function ServiceDetailPage() {
       if (!service?._id || !appointmentDate) return;
       setIsLoadingSlots(true);
       try {
+        const customerParam = user?.id ? `&customerId=${user.id}` : '';
         const res = await api.get<{ success: boolean; bookedSlots: string[] }>(
-          `/appointments/booked-slots?serviceId=${service._id}&date=${appointmentDate}`
+          `/appointments/booked-slots?serviceId=${service._id}&date=${appointmentDate}${customerParam}`
         );
         if (res.success && Array.isArray(res.bookedSlots)) {
           setBookedSlots(res.bookedSlots);
