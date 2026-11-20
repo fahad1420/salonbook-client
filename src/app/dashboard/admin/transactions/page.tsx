@@ -154,9 +154,9 @@ export default function AdminTransactionsPage() {
                       </thead>
                       <tbody className="divide-y divide-alabaster-200">
                         {transactions.map((tx) => {
-                          const customer = typeof tx.customerId === 'object' ? tx.customerId : null;
-                          const appt = typeof tx.appointmentId === 'object' ? (tx.appointmentId as any) : null;
-                          const service = appt && typeof appt.serviceId === 'object' ? appt.serviceId : null;
+                          const customer = tx.customer;
+                          const appt = tx.appointment;
+                          const service = appt?.serviceId;
 
                           return (
                             <tr key={tx._id} className="hover:bg-alabaster-50/70 transition-colors">
