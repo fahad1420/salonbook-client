@@ -49,7 +49,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setToken(storedToken);
       }
 
-      // Check current Better Auth session via /api/auth/me or authClient.getSession
+      // Check Better Auth session first (especially after OAuth callback)
+      try {
+        const session = await authClient.getSession();
+        if (session?.data?.user) {
+          const u = session.data.user as any;
+          if (u.isBlocked) {
+            toast.error('Your account has been suspended by salon administration.');
+            handleLogout();
+            return;
+          }
+          const normalizedUser: User = {
+            id: u.id || u._id || '',
+            name: u.name,
+            email: u.email,
+            role: u.role || 'customer',
+            isBlocked: !!u.isBlocked,
+            image: u.image,
+            phone: u.phone,
+          };
+          setUser(normalizedUser);
+          localStorage.setItem('salonbook_user', JSON.stringify(normalizedUser));
+          if (session.data.session?.token) {
+            localStorage.setItem('salonbook_token', session.data.session.token);
+            setToken(session.data.session.token);
+          }
+          return;
+        }
+      } catch {
+        // Fallback to /auth/me
+      }
+
+      // Check current Better Auth session via /api/auth/me
       const res = await api.get<{ success: boolean; user: User }>('/auth/me');
       if (res.success && res.user) {
         if (res.user.isBlocked) {
