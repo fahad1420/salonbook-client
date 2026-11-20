@@ -154,9 +154,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signInWithGoogle = async (): Promise<void> => {
     const callbackURL = `${window.location.origin}/dashboard/customer`;
+    const errorCallbackURL = `${window.location.origin}/sign-in`;
     await authClient.signIn.social({
       provider: 'google',
       callbackURL,
+      errorCallbackURL,
     });
   };
 
