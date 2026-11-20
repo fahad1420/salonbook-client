@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AdminSidebar from '@/components/AdminSidebar';
 import StatCard from '@/components/StatCard';
+import AppointmentReceiptModal from '@/components/AppointmentReceiptModal';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
 import { Appointment, Service } from '@/types';
@@ -21,6 +22,10 @@ import {
   Loader2,
   Check,
   Ban,
+  TrendingUp,
+  Receipt,
+  PieChart,
+  Percent,
 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -39,6 +44,7 @@ export default function AdminDashboardOverview() {
     totalRevenue: 0,
   });
   const [recentAppointments, setRecentAppointments] = useState<Appointment[]>([]);
+  const [selectedReceipt, setSelectedReceipt] = useState<Appointment | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -103,6 +109,26 @@ export default function AdminDashboardOverview() {
     );
   }
 
+  // Calculated Analytics Metrics
+  const totalBookings = stats.totalAppointments || 1;
+  const confirmedPct = Math.round((stats.confirmedAppointments / totalBookings) * 100);
+  const pendingPct = Math.round((stats.pendingAppointments / totalBookings) * 100);
+  const cancelledCount = Math.max(
+    0,
+    stats.totalAppointments - stats.confirmedAppointments - stats.pendingAppointments
+  );
+  const cancelledPct = Math.max(0, 100 - confirmedPct - pendingPct);
+
+  const avgTicket =
+    stats.successfulPayments > 0
+      ? Math.round(stats.totalRevenue / stats.successfulPayments)
+      : 0;
+
+  const paymentConversion =
+    stats.confirmedAppointments > 0
+      ? Math.round((stats.successfulPayments / stats.confirmedAppointments) * 100)
+      : 0;
+
   return (
     <div className="min-h-screen flex flex-col bg-alabaster-100">
       <Navbar />
@@ -125,7 +151,7 @@ export default function AdminDashboardOverview() {
             <div className="flex items-center gap-3 self-start md:self-auto">
               <Link
                 href="/dashboard/admin/services"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold tracking-wide transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold tracking-wide transition-all shadow-luxury"
               >
                 <PlusCircle className="w-4 h-4 text-champagne-400" />
                 <span>Add New Service</span>
@@ -187,8 +213,138 @@ export default function AdminDashboardOverview() {
                 />
               </div>
 
+              {/* Visual Analytics Breakdown Card */}
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-soft space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-alabaster-200 pb-4">
+                  <div>
+                    <span className="text-[10px] uppercase tracking-wider font-semibold text-champagne-700">
+                      Operational Health
+                    </span>
+                    <h2 className="font-serif text-xl font-medium text-espresso-950">
+                      Booking Pipeline &amp; Performance Metrics
+                    </h2>
+                  </div>
+                  <span className="text-xs text-stone-400">
+                    Live Database Aggregations
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Status Breakdown Progress Bars */}
+                  <div className="space-y-4">
+                    <h3 className="text-xs font-semibold uppercase tracking-wider text-stone-500">
+                      Appointment Status Distribution
+                    </h3>
+
+                    {/* Confirmed Progress Bar */}
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between text-xs">
+                        <span className="font-medium text-espresso-950 flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
+                          Confirmed Visits
+                        </span>
+                        <span className="text-stone-500">
+                          {stats.confirmedAppointments} ({confirmedPct}%)
+                        </span>
+                      </div>
+                      <div className="w-full h-2.5 bg-alabaster-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-emerald-600 rounded-full transition-all duration-700"
+                          style={{ width: `${confirmedPct}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Pending Progress Bar */}
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between text-xs">
+                        <span className="font-medium text-espresso-950 flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" />
+                          Pending Director Review
+                        </span>
+                        <span className="text-stone-500">
+                          {stats.pendingAppointments} ({pendingPct}%)
+                        </span>
+                      </div>
+                      <div className="w-full h-2.5 bg-alabaster-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-amber-500 rounded-full transition-all duration-700"
+                          style={{ width: `${pendingPct}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Cancelled Progress Bar */}
+                    <div className="space-y-1.5">
+                      <div className="flex justify-between text-xs">
+                        <span className="font-medium text-espresso-950 flex items-center gap-1.5">
+                          <span className="w-2.5 h-2.5 rounded-full bg-stone-400 inline-block" />
+                          Cancelled / Archived
+                        </span>
+                        <span className="text-stone-500">
+                          {cancelledCount} ({cancelledPct}%)
+                        </span>
+                      </div>
+                      <div className="w-full h-2.5 bg-alabaster-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-stone-400 rounded-full transition-all duration-700"
+                          style={{ width: `${cancelledPct}%` }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Efficiency KPIs */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-4 rounded-2xl bg-alabaster-50 border border-alabaster-300 space-y-1">
+                      <div className="flex items-center gap-1.5 text-champagne-700 text-xs font-semibold">
+                        <TrendingUp className="w-4 h-4" />
+                        <span>Avg Ticket Size</span>
+                      </div>
+                      <p className="font-serif text-2xl font-semibold text-espresso-950">
+                        ${avgTicket}
+                      </p>
+                      <p className="text-[11px] text-stone-400">Per settled transaction</p>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-alabaster-50 border border-alabaster-300 space-y-1">
+                      <div className="flex items-center gap-1.5 text-champagne-700 text-xs font-semibold">
+                        <Percent className="w-4 h-4" />
+                        <span>Payment Settle Rate</span>
+                      </div>
+                      <p className="font-serif text-2xl font-semibold text-espresso-950">
+                        {paymentConversion}%
+                      </p>
+                      <p className="text-[11px] text-stone-400">Of confirmed bookings</p>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-alabaster-50 border border-alabaster-300 space-y-1">
+                      <div className="flex items-center gap-1.5 text-champagne-700 text-xs font-semibold">
+                        <CheckCircle2 className="w-4 h-4" />
+                        <span>Confirmation Rate</span>
+                      </div>
+                      <p className="font-serif text-2xl font-semibold text-espresso-950">
+                        {confirmedPct}%
+                      </p>
+                      <p className="text-[11px] text-stone-400">Requests approved</p>
+                    </div>
+
+                    <div className="p-4 rounded-2xl bg-alabaster-50 border border-alabaster-300 space-y-1">
+                      <div className="flex items-center gap-1.5 text-champagne-700 text-xs font-semibold">
+                        <Scissors className="w-4 h-4" />
+                        <span>Active Catalog</span>
+                      </div>
+                      <p className="font-serif text-2xl font-semibold text-espresso-950">
+                        {stats.activeServices}
+                      </p>
+                      <p className="text-[11px] text-stone-400">Disciplines active</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Recent Bookings Queue */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-sm space-y-6">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-soft space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
                     <h2 className="font-serif text-xl font-medium text-espresso-950">
@@ -220,23 +376,34 @@ export default function AdminDashboardOverview() {
                           <th className="pb-3">Service</th>
                           <th className="pb-3">Date &amp; Slot</th>
                           <th className="pb-3">Price</th>
+                          <th className="pb-3">Payment</th>
                           <th className="pb-3">Status</th>
                           <th className="pb-3 text-right">Quick Action</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-alabaster-200">
                         {recentAppointments.map((appt) => {
-                          const customer = typeof appt.customerId === 'object' ? appt.customerId : null;
-                          const service = typeof appt.serviceId === 'object' ? (appt.serviceId as Service) : null;
+                          const customer =
+                            typeof appt.customerId === 'object' ? appt.customerId : null;
+                          const service =
+                            typeof appt.serviceId === 'object'
+                              ? (appt.serviceId as Service)
+                              : null;
                           const isPending = appt.status === 'pending';
+                          const isPaid = appt.paymentStatus === 'paid';
 
                           return (
-                            <tr key={appt._id} className="hover:bg-alabaster-50/70 transition-colors">
+                            <tr
+                              key={appt._id}
+                              className="hover:bg-alabaster-50/70 transition-colors"
+                            >
                               <td className="py-4 pr-3">
                                 <p className="font-semibold text-espresso-950 text-sm">
                                   {customer?.name || 'Client'}
                                 </p>
-                                <p className="text-[11px] text-stone-500 truncate">{customer?.email}</p>
+                                <p className="text-[11px] text-stone-500 truncate">
+                                  {customer?.email}
+                                </p>
                               </td>
                               <td className="py-4 pr-3">
                                 <p className="font-medium text-espresso-900">
@@ -247,50 +414,77 @@ export default function AdminDashboardOverview() {
                                 </span>
                               </td>
                               <td className="py-4 pr-3 whitespace-nowrap">
-                                <p className="font-medium text-espresso-900">{appt.appointmentDate}</p>
-                                <p className="text-[11px] text-stone-400">{appt.timeSlot}</p>
+                                <p className="font-medium text-espresso-900">
+                                  {appt.appointmentDate}
+                                </p>
+                                <p className="text-[11px] text-stone-500">{appt.timeSlot}</p>
                               </td>
-                              <td className="py-4 pr-3 font-semibold text-espresso-950">
+                              <td className="py-4 pr-3 font-semibold text-espresso-950 whitespace-nowrap">
                                 ${appt.servicePrice}
                               </td>
-                              <td className="py-4 pr-3">
-                                {appt.status === 'confirmed' ? (
-                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
-                                    Confirmed
-                                  </span>
-                                ) : appt.status === 'cancelled' ? (
-                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200">
-                                    Cancelled
-                                  </span>
-                                ) : (
-                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
-                                    Pending
-                                  </span>
-                                )}
+                              <td className="py-4 pr-3 whitespace-nowrap">
+                                <span
+                                  className={`inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${
+                                    isPaid
+                                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                                      : 'bg-stone-100 text-stone-600 border border-stone-200'
+                                  }`}
+                                >
+                                  {appt.paymentStatus}
+                                </span>
                               </td>
-                              <td className="py-4 text-right space-x-1.5 whitespace-nowrap">
-                                {isPending ? (
-                                  <>
+                              <td className="py-4 pr-3 whitespace-nowrap">
+                                <span
+                                  className={`inline-block px-2.5 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider ${
+                                    appt.status === 'confirmed'
+                                      ? 'bg-emerald-100 text-emerald-800'
+                                      : appt.status === 'cancelled'
+                                      ? 'bg-rose-100 text-rose-800'
+                                      : 'bg-amber-100 text-amber-800'
+                                  }`}
+                                >
+                                  {appt.status}
+                                </span>
+                              </td>
+                              <td className="py-4 text-right whitespace-nowrap">
+                                <div className="flex items-center justify-end gap-2">
+                                  {isPaid && (
                                     <button
-                                      onClick={() => handleUpdateStatus(appt._id, 'confirmed')}
-                                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-colors"
-                                      title="Confirm Appointment"
+                                      type="button"
+                                      onClick={() => setSelectedReceipt(appt)}
+                                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-alabaster-100 hover:bg-alabaster-200 text-espresso-900 text-[11px] font-medium border border-alabaster-300 transition-colors"
+                                      title="View Receipt"
                                     >
-                                      <Check className="w-3 h-3" />
-                                      <span>Confirm</span>
+                                      <Receipt className="w-3 h-3 text-champagne-600" />
+                                      <span>Receipt</span>
                                     </button>
-                                    <button
-                                      onClick={() => handleUpdateStatus(appt._id, 'cancelled')}
-                                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-rose-200 text-rose-700 hover:bg-rose-50 font-medium transition-colors"
-                                      title="Cancel Appointment"
-                                    >
-                                      <Ban className="w-3 h-3" />
-                                      <span>Reject</span>
-                                    </button>
-                                  </>
-                                ) : (
-                                  <span className="text-[11px] text-stone-400">Processed</span>
-                                )}
+                                  )}
+
+                                  {isPending && (
+                                    <>
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          handleUpdateStatus(appt._id, 'confirmed')
+                                        }
+                                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-[11px] font-medium transition-colors"
+                                      >
+                                        <Check className="w-3 h-3" />
+                                        <span>Confirm</span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        onClick={() =>
+                                          handleUpdateStatus(appt._id, 'cancelled')
+                                        }
+                                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-[11px] font-medium transition-colors"
+                                      >
+                                        <Ban className="w-3 h-3" />
+                                        <span>Cancel</span>
+                                      </button>
+                                    </>
+                                  )}
+                                </div>
                               </td>
                             </tr>
                           );
@@ -299,8 +493,8 @@ export default function AdminDashboardOverview() {
                     </table>
                   </div>
                 ) : (
-                  <p className="text-center text-stone-500 text-sm py-8">
-                    No reservations recorded yet.
+                  <p className="text-xs text-stone-500 text-center py-8">
+                    No reservations logged yet.
                   </p>
                 )}
               </div>
@@ -310,6 +504,12 @@ export default function AdminDashboardOverview() {
       </main>
 
       <Footer />
+
+      {/* Digital Receipt Modal */}
+      <AppointmentReceiptModal
+        appointment={selectedReceipt}
+        onClose={() => setSelectedReceipt(null)}
+      />
     </div>
   );
 }

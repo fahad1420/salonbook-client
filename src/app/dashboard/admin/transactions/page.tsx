@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AdminSidebar from '@/components/AdminSidebar';
+import AppointmentReceiptModal from '@/components/AppointmentReceiptModal';
 import { useAuth } from '@/context/AuthContext';
-import { Transaction } from '@/types';
+import { Transaction, Appointment } from '@/types';
 import { api } from '@/lib/api';
 import {
   Receipt,
@@ -25,6 +26,7 @@ export default function AdminTransactionsPage() {
   const router = useRouter();
 
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [selectedReceipt, setSelectedReceipt] = useState<Appointment | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -97,37 +99,44 @@ export default function AdminTransactionsPage() {
 
             <div className="flex-1 w-full space-y-6">
               {/* Summary Banner */}
-              <div className="bg-espresso-950 text-white rounded-3xl p-6 sm:p-8 border border-espresso-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-md">
+              <div className="bg-espresso-950 text-white rounded-3xl p-6 sm:p-8 border border-espresso-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-luxury">
                 <div className="space-y-1">
-                  <span className="text-xs uppercase tracking-wider text-champagne-400 font-semibold">
-                    Total Settled Volume
+                  <span className="text-xs font-semibold uppercase tracking-wider text-champagne-400">
+                    Settled Financial Volume
                   </span>
-                  <p className="font-serif text-3xl sm:text-4xl font-semibold text-white">
-                    ${totalVolume.toLocaleString()}.00
+                  <p className="font-serif text-3xl sm:text-4xl font-bold text-white">
+                    ${totalVolume.toLocaleString()}.00 USD
                   </p>
                   <p className="text-xs text-stone-400">
-                    Calculated from {transactions.filter((t) => t.status === 'paid').length} verified Stripe sessions.
+                    Total revenue automatically settled via Stripe Webhook listener.
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-espresso-800/80 border border-espresso-700 text-xs text-stone-300">
-                  <Lock className="w-3.5 h-3.5 text-champagne-400" />
-                  <span>Immutable Stripe Audit Trail</span>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-espresso-900 border border-espresso-800 text-xs text-stone-300">
+                  <Lock className="w-4 h-4 text-champagne-400" />
+                  <span>Immutable Audit Ledger</span>
                 </div>
               </div>
 
-              {/* Transactions Table Card */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-sm space-y-6">
+              {/* Transactions Table */}
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-soft space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="font-serif text-xl font-medium text-espresso-950">
-                    All Payment Records ({transactions.length})
-                  </h2>
+                  <div>
+                    <h2 className="font-serif text-xl font-medium text-espresso-950">
+                      Settled Payments
+                    </h2>
+                    <p className="text-xs text-stone-500">
+                      Real-time ledger entries created only upon verified Stripe webhook callbacks.
+                    </p>
+                  </div>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-stone-400">
+                    {transactions.length} Records
+                  </span>
                 </div>
 
                 {isLoading ? (
-                  <div className="py-16 flex flex-col items-center justify-center gap-3">
-                    <Loader2 className="w-7 h-7 text-champagne-600 animate-spin" />
-                    <p className="text-xs text-stone-500">Loading ledger...</p>
+                  <div className="py-12 flex justify-center">
+                    <Loader2 className="w-6 h-6 text-champagne-600 animate-spin" />
                   </div>
                 ) : transactions.length > 0 ? (
                   <div className="overflow-x-auto">
@@ -135,18 +144,19 @@ export default function AdminTransactionsPage() {
                       <thead>
                         <tr className="border-b border-alabaster-200 text-stone-400 uppercase tracking-wider font-semibold">
                           <th className="pb-3">Client</th>
-                          <th className="pb-3">Service &amp; Date</th>
-                          <th className="pb-3">Amount</th>
+                          <th className="pb-3">Service &amp; Booking</th>
+                          <th className="pb-3">Gross Amount</th>
                           <th className="pb-3">Stripe Session ID</th>
-                          <th className="pb-3">Settlement</th>
-                          <th className="pb-3 text-right">Timestamp</th>
+                          <th className="pb-3">Payment Status</th>
+                          <th className="pb-3">Settlement Date</th>
+                          <th className="pb-3 text-right">Receipt</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-alabaster-200">
                         {transactions.map((tx) => {
-                          const customer = tx.customer;
-                          const appt = tx.appointment;
-                          const service = appt?.serviceId;
+                          const customer = typeof tx.customerId === 'object' ? tx.customerId : null;
+                          const appt = typeof tx.appointmentId === 'object' ? (tx.appointmentId as any) : null;
+                          const service = appt && typeof appt.serviceId === 'object' ? appt.serviceId : null;
 
                           return (
                             <tr key={tx._id} className="hover:bg-alabaster-50/70 transition-colors">
@@ -190,8 +200,33 @@ export default function AdminTransactionsPage() {
                                   </span>
                                 )}
                               </td>
-                              <td className="py-4 text-right text-stone-500 whitespace-nowrap text-[11px]">
+                              <td className="py-4 text-stone-500 whitespace-nowrap text-[11px]">
                                 {new Date(tx.createdAt).toLocaleDateString()} {new Date(tx.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                              </td>
+                              <td className="py-4 text-right">
+                                {appt && (
+                                  <button
+                                    onClick={() => {
+                                      // Construct appointment shape for receipt modal
+                                      setSelectedReceipt({
+                                        _id: appt._id || tx._id,
+                                        customerId: customer || { name: 'Valued Client', email: '' },
+                                        serviceId: service || { serviceName: 'Atelier Treatment', category: 'Salon' },
+                                        servicePrice: tx.amount,
+                                        appointmentDate: appt.appointmentDate || new Date().toISOString().split('T')[0],
+                                        timeSlot: appt.timeSlot || 'Atelier Reserved Slot',
+                                        paymentStatus: 'paid',
+                                        status: 'confirmed',
+                                        createdAt: tx.createdAt,
+                                      } as any);
+                                    }}
+                                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-alabaster-100 hover:bg-alabaster-200 text-espresso-950 text-[11px] font-medium border border-alabaster-300 transition-colors"
+                                    title="View Printable Receipt"
+                                  >
+                                    <Receipt className="w-3 h-3 text-champagne-600" />
+                                    <span>Receipt</span>
+                                  </button>
+                                )}
                               </td>
                             </tr>
                           );
@@ -211,6 +246,12 @@ export default function AdminTransactionsPage() {
       </main>
 
       <Footer />
+
+      {/* Digital Receipt Modal */}
+      <AppointmentReceiptModal
+        appointment={selectedReceipt}
+        onClose={() => setSelectedReceipt(null)}
+      />
     </div>
   );
 }

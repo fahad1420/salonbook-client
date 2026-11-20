@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CustomerSidebar from '@/components/CustomerSidebar';
 import AppointmentDetailsModal from '@/components/AppointmentDetailsModal';
+import AppointmentReceiptModal from '@/components/AppointmentReceiptModal';
 import ConfirmModal from '@/components/ConfirmModal';
 import { useAuth } from '@/context/AuthContext';
 import { Appointment, Service } from '@/types';
@@ -21,6 +22,7 @@ import {
   Ban,
   Loader2,
   Sparkles,
+  Receipt,
 } from 'lucide-react';
 import Link from 'next/link';
 import { toast } from 'sonner';
@@ -35,6 +37,7 @@ export default function CustomerAppointmentsPage() {
 
   // Modals state
   const [selectedAppointment, setSelectedAppointment] = useState<Appointment | null>(null);
+  const [selectedReceipt, setSelectedReceipt] = useState<Appointment | null>(null);
   const [cancellingAppt, setCancellingAppt] = useState<Appointment | null>(null);
   const [isCancelling, setIsCancelling] = useState(false);
 
@@ -257,6 +260,18 @@ export default function CustomerAppointmentsPage() {
                                 <Eye className="w-4 h-4" />
                               </button>
 
+                              {/* Official Receipt (Shown for any paid appointment) */}
+                              {appt.paymentStatus === 'paid' && (
+                                <button
+                                  onClick={() => setSelectedReceipt(appt)}
+                                  className="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-alabaster-100 hover:bg-alabaster-200 text-espresso-950 text-xs font-medium border border-alabaster-300 transition-colors"
+                                  title="View Official Digital Receipt"
+                                >
+                                  <Receipt className="w-3.5 h-3.5 text-champagne-600" />
+                                  <span>Receipt</span>
+                                </button>
+                              )}
+
                               {/* Self Cancellation (Allowed ONLY for own pending appointments) */}
                               {isPending && (
                                 <button
@@ -309,6 +324,12 @@ export default function CustomerAppointmentsPage() {
       <AppointmentDetailsModal
         appointment={selectedAppointment}
         onClose={() => setSelectedAppointment(null)}
+      />
+
+      {/* Digital Receipt Modal */}
+      <AppointmentReceiptModal
+        appointment={selectedReceipt}
+        onClose={() => setSelectedReceipt(null)}
       />
 
       {/* Cancellation Confirmation Dialog */}

@@ -40,3 +40,25 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #C59B6D;
 }
+
+/* Print styling for digital booking receipts */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header,
+  footer,
+  nav,
+  aside,
+  button {
+    display: none !important;
+  }
+  .printable-receipt {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+}
