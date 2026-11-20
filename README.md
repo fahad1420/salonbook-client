@@ -61,6 +61,5 @@ High-end, bespoke appointment booking platform for **SalonBook**, designed with 
 ## Environment Variables (`.env.local`)
 ```bash
 NEXT_PUBLIC_API_URL=https://salonbook-api.vercel.app/api
-NEXT_PUBLIC_IMGBB_API_KEY=your_imgbb_api_key
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
 ```
