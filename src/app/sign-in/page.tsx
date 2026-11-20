@@ -6,7 +6,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Sparkles, Lock, Mail, ArrowRight, Loader2, ShieldCheck, UserCheck } from 'lucide-react';
+import { LogoMonogram } from '@/components/Logo';
+import { Lock, Mail, ArrowRight, Loader2, ShieldCheck, UserCheck } from 'lucide-react';
 import { toast } from 'sonner';
 
 function SignInContent() {
@@ -79,8 +80,8 @@ function SignInContent() {
       <main className="flex-1 flex items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-alabaster-300 shadow-xl shadow-stone-200/50">
           <div className="text-center space-y-2">
-            <div className="inline-flex w-12 h-12 rounded-full bg-espresso-900 text-alabaster-100 items-center justify-center mb-1">
-              <Sparkles className="w-6 h-6 text-champagne-400" />
+            <div className="flex justify-center mb-2">
+              <LogoMonogram size={48} />
             </div>
             <h1 className="font-serif text-3xl font-medium tracking-tight text-espresso-950">
               Welcome to SalonBook

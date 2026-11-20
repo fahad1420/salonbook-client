@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Service } from '@/types';
-import { Clock, ArrowRight, Sparkles } from 'lucide-react';
+import { Clock, ArrowRight } from 'lucide-react';
 import ServiceImage from './ServiceImage';
 
 interface ServiceCardProps {
@@ -28,7 +28,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         {/* Category Badge */}
         <div className="absolute top-4 left-4 z-10">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-espresso-900 text-[11px] font-semibold tracking-wider uppercase shadow-sm border border-alabaster-300">
-            <Sparkles className="w-3 h-3 text-champagne-600" />
+            <span className="w-1.5 h-1.5 rounded-full bg-champagne-600"></span>
             <span>{service.category}</span>
           </span>
         </div>

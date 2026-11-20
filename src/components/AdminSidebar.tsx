@@ -12,7 +12,6 @@ import {
   Receipt,
   User as UserIcon,
   LogOut,
-  Sparkles,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -122,7 +121,7 @@ export default function AdminSidebar() {
             className="flex items-center justify-between px-4 py-2.5 rounded-2xl text-xs font-medium text-stone-600 hover:text-espresso-950 hover:bg-alabaster-100 transition-colors"
           >
             <span className="flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-champagne-600" />
+              <CalendarCheck className="w-3.5 h-3.5 text-champagne-600" />
               <span>Public Atelier Menu</span>
             </span>
           </Link>

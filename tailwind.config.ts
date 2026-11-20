@@ -40,6 +40,22 @@ const config: Config = {
           600: '#9E535E',
           700: '#7F3D47',
         },
+        sand: {
+          100: '#F5F1EB',
+          200: '#E9E1D7', // Neutral Sand subtle container & border accent
+          300: '#DDD2C3',
+          400: '#C8BAA6',
+          500: '#B2A088',
+        },
+        sage: {
+          50: '#F4F6F4',
+          100: '#E5E9E4',
+          200: '#C7D1C6',
+          300: '#A4B3A2',
+          500: '#788477', // Refined Sage organic status & calm accent
+          600: '#647063',
+          700: '#4F5A4E',
+        },
       },
       fontFamily: {
         serif: ['"Playfair Display"', '"Cormorant Garamond"', 'Georgia', 'serif'],

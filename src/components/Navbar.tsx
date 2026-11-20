@@ -4,7 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
-import { Sparkles, Menu, X, User as UserIcon, Calendar, LogOut, LayoutDashboard, ChevronDown } from 'lucide-react';
+import Logo from '@/components/Logo';
+import { Menu, X, User as UserIcon, Calendar, LogOut, LayoutDashboard, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Navbar() {
@@ -35,19 +36,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-espresso-900 flex items-center justify-center text-alabaster-100 shadow-sm transition-transform group-hover:scale-105">
-              <Sparkles className="w-5 h-5 text-champagne-400" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-2xl font-medium tracking-tight text-espresso-900">
-                Salon<span className="text-champagne-600 font-normal">Book</span>
-              </span>
-              <span className="text-[10px] tracking-[0.2em] uppercase text-stone-500 font-medium -mt-1">
-                Luxury &amp; Spa
-              </span>
-            </div>
-          </Link>
+          <Logo variant="dark" size="md" />
 
           {/* Desktop Navigation Links */}
           <nav className="hidden md:flex items-center gap-8">

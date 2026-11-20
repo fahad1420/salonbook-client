@@ -11,7 +11,7 @@ import { api } from '@/lib/api';
 import {
   Search,
   SlidersHorizontal,
-  Sparkles,
+  CalendarCheck,
   X,
   ArrowUpDown,
   RotateCcw,
@@ -137,7 +137,7 @@ function ServicesContent() {
           {/* Editorial Page Header */}
           <header className="text-center max-w-3xl mx-auto space-y-3.5">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne-100 text-champagne-800 text-xs font-semibold tracking-wider uppercase border border-champagne-300 shadow-soft">
-              <Sparkles className="w-3.5 h-3.5 text-champagne-600" />
+              <CalendarCheck className="w-3.5 h-3.5 text-champagne-600" />
               <span>Full Atelier Menu &bull; Curated Services</span>
             </div>
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-espresso-950">

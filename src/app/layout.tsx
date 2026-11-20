@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description:
     'Experience bespoke beauty artistry and restorative spa therapies. Reserve your private session with certified European master stylists.',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/icon.svg',
   },
 };
 

@@ -11,7 +11,6 @@ import ServiceImage from '@/components/ServiceImage';
 import { Service, SERVICE_CATEGORIES } from '@/types';
 import { api } from '@/lib/api';
 import {
-  Sparkles,
   ArrowRight,
   ShieldCheck,
   Award,
@@ -24,6 +23,11 @@ import {
   CheckCircle2,
   Calendar,
   Lock,
+  Search,
+  Check,
+  DollarSign,
+  UserCheck,
+  SlidersHorizontal,
 } from 'lucide-react';
 
 const CATEGORY_META: Record<
@@ -77,24 +81,71 @@ const CATEGORY_META: Record<
 const HOW_IT_WORKS_STEPS = [
   {
     step: '01',
-    title: 'Select Your Treatment',
+    title: 'Explore Services',
     description:
-      'Explore our transparent catalog of salon rituals with clear pricing, session durations, and detailed descriptions.',
-    icon: Scissors,
+      'Browse through 7 curated salon disciplines with live search, category filters, and detailed session notes.',
+    icon: Search,
   },
   {
     step: '02',
-    title: 'Choose Date & Time Slot',
+    title: 'Select a Service',
     description:
-      'Select from predefined daily salon slots. Live availability verification ensures zero double-booking conflicts.',
-    icon: Calendar,
+      'Review exact session durations, pricing, and treatment protocols with zero hidden chair charges.',
+    icon: Scissors,
   },
   {
     step: '03',
-    title: 'Confirmation & Contactless Pay',
+    title: 'Choose Date & Time',
     description:
-      'Our concierge reviews your request. Once confirmed, settle securely with Stripe for an unhurried salon visit.',
+      'Pick from predefined salon time slots. Real-time availability checks eliminate double-booking conflicts.',
+    icon: Calendar,
+  },
+  {
+    step: '04',
+    title: 'Confirm Appointment',
+    description:
+      'The atelier administration reviews and confirms eligible bookings directly on your personal dashboard.',
+    icon: CheckCircle2,
+  },
+  {
+    step: '05',
+    title: 'Complete Payment',
+    description:
+      'Settle seamlessly with Stripe Checkout once confirmed, backed by verified server webhook delivery.',
     icon: CreditCard,
+  },
+];
+
+const WHY_SALONBOOK_BENEFITS = [
+  {
+    title: 'Convenient Appointment Booking',
+    description:
+      'Real-time availability validation guarantees your selected slot is locked with zero scheduling conflicts.',
+    icon: CalendarCheck,
+  },
+  {
+    title: 'Transparent Service Pricing',
+    description:
+      'Every treatment showcases its exact price and duration upfront with zero hidden fees or unexpected costs.',
+    icon: Award,
+  },
+  {
+    title: 'Appointment Management',
+    description:
+      'Full self-service customer control to monitor booking status, inspect appointment receipts, or cancel pending requests.',
+    icon: SlidersHorizontal,
+  },
+  {
+    title: 'Secure Online Payment',
+    description:
+      'Contactless Stripe Checkout integration with automated signature-verified webhook confirmation.',
+    icon: Lock,
+  },
+  {
+    title: 'Easy Customer Account Management',
+    description:
+      'Seamless profile management powered by Better Auth, Google OAuth integration, and isolated customer portals.',
+    icon: UserCheck,
   },
 ];
 
@@ -176,7 +227,7 @@ export default function HomePage() {
               {/* Hero Copy */}
               <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-espresso-900 border border-alabaster-300 text-xs font-semibold tracking-wider uppercase shadow-soft">
-                  <Sparkles className="w-3.5 h-3.5 text-champagne-600" />
+                  <CalendarCheck className="w-3.5 h-3.5 text-champagne-600" />
                   <span>Salon &amp; Spa Appointment Booking</span>
                 </div>
 
@@ -270,7 +321,7 @@ export default function HomePage() {
                   {/* Feature Highlight Card */}
                   <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-luxury border border-alabaster-300 max-w-xs hidden sm:block">
                     <div className="flex items-center gap-2 text-champagne-700 text-xs font-semibold mb-1">
-                      <Sparkles className="w-3.5 h-3.5" />
+                      <CalendarCheck className="w-3.5 h-3.5" />
                       <span>Dedicated Appointment Flow</span>
                     </div>
                     <p className="text-xs text-espresso-950 leading-snug">
@@ -411,8 +462,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. Extra Meaningful Section: How SalonBook Works */}
-        <section className="py-20 md:py-28 bg-white border-b border-alabaster-300">
+        {/* 4. How SalonBook Works: 5 Clear Steps */}
+        <section id="how-it-works" className="py-20 md:py-28 bg-white border-b border-alabaster-300 scroll-mt-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
@@ -422,32 +473,32 @@ export default function HomePage() {
                 How SalonBook Works
               </h2>
               <p className="text-stone-500 text-sm leading-relaxed">
-                A simple, reliable three-step process engineered to eliminate scheduling friction and prevent double-booking.
+                A streamlined five-step booking process engineered for effortless reservations and zero scheduling friction.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
               {HOW_IT_WORKS_STEPS.map((item) => {
                 const IconComponent = item.icon;
                 return (
                   <div
                     key={item.step}
-                    className="relative rounded-3xl border border-alabaster-300 bg-alabaster-50 p-8 space-y-5 shadow-soft hover:shadow-luxury-hover transition-all duration-300"
+                    className="relative rounded-3xl border border-alabaster-300 bg-alabaster-50 p-6 space-y-4 shadow-soft hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
                   >
                     <div className="flex items-center justify-between">
-                      <div className="w-12 h-12 rounded-2xl bg-espresso-900 text-champagne-400 flex items-center justify-center shadow-sm">
-                        <IconComponent className="w-6 h-6" />
+                      <div className="w-10 h-10 rounded-xl bg-espresso-900 text-champagne-400 flex items-center justify-center shadow-sm">
+                        <IconComponent className="w-5 h-5" />
                       </div>
-                      <span className="font-serif text-3xl font-semibold text-champagne-300">
+                      <span className="font-serif text-2xl font-bold text-champagne-400">
                         {item.step}
                       </span>
                     </div>
 
-                    <div className="space-y-2">
-                      <h3 className="font-serif text-xl font-medium text-espresso-950">
+                    <div className="space-y-1.5 flex-1">
+                      <h3 className="font-serif text-lg font-semibold text-espresso-950">
                         {item.title}
                       </h3>
-                      <p className="text-stone-600 text-sm leading-relaxed">
+                      <p className="text-stone-600 text-xs leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -458,8 +509,51 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. Salon Standards & Booking Policies */}
-        <section className="py-20 md:py-28 bg-alabaster-100 border-b border-alabaster-300">
+        {/* 5. Why SalonBook: Real Platform Benefits */}
+        <section id="why-salonbook" className="py-20 md:py-28 bg-alabaster-100 border-b border-alabaster-300 scroll-mt-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
+                Platform Excellence
+              </span>
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+                Why SalonBook
+              </h2>
+              <p className="text-stone-500 text-sm leading-relaxed">
+                Experience transparent pricing, verified slot reservations, and seamless self-service management.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {WHY_SALONBOOK_BENEFITS.map((benefit, idx) => {
+                const IconComponent = benefit.icon;
+                return (
+                  <div
+                    key={benefit.title}
+                    className={`p-8 rounded-3xl bg-white border border-alabaster-300 space-y-4 shadow-soft hover:shadow-luxury-hover hover:border-champagne-300 transition-all duration-300 ${
+                      idx === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+                    }`}
+                  >
+                    <div className="w-12 h-12 rounded-2xl bg-espresso-900 text-champagne-400 flex items-center justify-center shadow-sm">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <div className="space-y-2">
+                      <h3 className="font-serif text-xl font-medium text-espresso-950">
+                        {benefit.title}
+                      </h3>
+                      <p className="text-stone-600 text-sm leading-relaxed">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* 6. Salon Standards & Operating Policies */}
+        <section id="standards" className="py-20 md:py-28 bg-white border-b border-alabaster-300 scroll-mt-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
@@ -479,7 +573,7 @@ export default function HomePage() {
                 return (
                   <div
                     key={policy.title}
-                    className="p-8 rounded-3xl bg-white border border-alabaster-300 space-y-4 hover:border-champagne-400 transition-colors shadow-soft"
+                    className="p-8 rounded-3xl bg-alabaster-50 border border-alabaster-300 space-y-4 hover:border-champagne-400 transition-colors shadow-soft"
                   >
                     <div className="w-12 h-12 rounded-2xl bg-espresso-900 text-champagne-400 flex items-center justify-center">
                       <IconComponent className="w-6 h-6" />

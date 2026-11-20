@@ -12,7 +12,7 @@ import { useAuth } from '@/context/AuthContext';
 import { api, ApiError } from '@/lib/api';
 import {
   Clock,
-  Sparkles,
+  CalendarCheck,
   Calendar,
   AlertCircle,
   CheckCircle2,
@@ -335,7 +335,7 @@ export default function ServiceDetailPage() {
               <div className="sticky top-28 bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-luxury space-y-6">
                 <div className="space-y-1.5">
                   <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-champagne-700">
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <CalendarCheck className="w-3.5 h-3.5" />
                     <span>Reserve Session</span>
                   </div>
                   <h2 className="font-serif text-2xl font-medium text-espresso-950">
@@ -498,7 +498,7 @@ export default function ServiceDetailPage() {
                     ) : (
                       <>
                         <span>Submit Booking Request</span>
-                        <Sparkles className="w-4 h-4 text-champagne-400" />
+                        <CheckCircle2 className="w-4 h-4 text-champagne-400" />
                       </>
                     )}
                   </button>

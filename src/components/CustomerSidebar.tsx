@@ -9,8 +9,8 @@ import {
   Calendar,
   User as UserIcon,
   LogOut,
-  Sparkles,
   ExternalLink,
+  CalendarCheck,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -102,7 +102,7 @@ export default function CustomerSidebar() {
             className="flex items-center justify-between px-4 py-2.5 rounded-2xl text-xs font-medium text-stone-600 hover:text-espresso-950 hover:bg-alabaster-100 transition-colors"
           >
             <span className="flex items-center gap-2">
-              <Sparkles className="w-3.5 h-3.5 text-champagne-600" />
+              <CalendarCheck className="w-3.5 h-3.5 text-champagne-600" />
               <span>Browse Catalog</span>
             </span>
             <ExternalLink className="w-3.5 h-3.5 text-stone-400" />
