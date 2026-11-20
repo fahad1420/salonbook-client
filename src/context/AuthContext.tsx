@@ -4,6 +4,7 @@ import React, { createContext, useContext, useState, useEffect, useCallback } fr
 import { useRouter } from 'next/navigation';
 import { User } from '@/types';
 import { api, ApiError } from '@/lib/api';
+import { authClient } from '@/lib/auth-client';
 import { toast } from 'sonner';
 
 interface AuthContextType {
@@ -18,8 +19,9 @@ interface AuthContextType {
     image?: string;
     phone?: string;
   }) => Promise<User>;
-  googleSignIn: (data: { name: string; email: string; image?: string }) => Promise<User>;
-  signOut: () => void;
+  signInWithGoogle: () => Promise<void>;
+  googleTokenSignIn: (idToken: string) => Promise<User>;
+  signOut: () => Promise<void>;
   refreshUser: () => Promise<void>;
   updateUser: (data: Partial<User>) => void;
 }
@@ -40,14 +42,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const refreshUser = useCallback(async () => {
-    const storedToken = localStorage.getItem('salonbook_token');
-    if (!storedToken) {
-      setIsLoading(false);
-      return;
-    }
+    const storedToken = typeof window !== 'undefined' ? localStorage.getItem('salonbook_token') : null;
 
     try {
-      setToken(storedToken);
+      if (storedToken) {
+        setToken(storedToken);
+      }
+
+      // Check current Better Auth session via /api/auth/me or authClient.getSession
       const res = await api.get<{ success: boolean; user: User }>('/auth/me');
       if (res.success && res.user) {
         if (res.user.isBlocked) {
@@ -57,6 +59,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setUser(res.user);
           localStorage.setItem('salonbook_user', JSON.stringify(res.user));
         }
+      } else {
+        handleLogout();
       }
     } catch (error) {
       if (error instanceof ApiError && error.status === 403) {
@@ -78,13 +82,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       { email, password }
     );
 
-    if (res.success && res.token && res.user) {
+    if (res.success && res.user) {
       if (res.user.isBlocked) {
         throw new Error('Your account has been suspended by salon administration.');
       }
-      localStorage.setItem('salonbook_token', res.token);
+      if (res.token) {
+        localStorage.setItem('salonbook_token', res.token);
+        setToken(res.token);
+      }
       localStorage.setItem('salonbook_user', JSON.stringify(res.user));
-      setToken(res.token);
       setUser(res.user);
       return res.user;
     }
@@ -103,43 +109,55 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       data
     );
 
-    if (res.success && res.token && res.user) {
-      localStorage.setItem('salonbook_token', res.token);
+    if (res.success && res.user) {
+      if (res.token) {
+        localStorage.setItem('salonbook_token', res.token);
+        setToken(res.token);
+      }
       localStorage.setItem('salonbook_user', JSON.stringify(res.user));
-      setToken(res.token);
       setUser(res.user);
       return res.user;
     }
     throw new Error('Failed to create account.');
   };
 
-  const googleSignIn = async (data: {
-    name: string;
-    email: string;
-    image?: string;
-  }): Promise<User> => {
+  const signInWithGoogle = async (): Promise<void> => {
+    const callbackURL = `${window.location.origin}/dashboard/customer`;
+    await authClient.signIn.social({
+      provider: 'google',
+      callbackURL,
+    });
+  };
+
+  const googleTokenSignIn = async (idToken: string): Promise<User> => {
     const res = await api.post<{ success: boolean; token: string; user: User }>(
-      '/auth/google',
-      data
+      '/auth/google-token',
+      { idToken }
     );
 
-    if (res.success && res.token && res.user) {
+    if (res.success && res.user) {
       if (res.user.isBlocked) {
         throw new Error('Your account has been suspended by salon administration.');
       }
-      localStorage.setItem('salonbook_token', res.token);
+      if (res.token) {
+        localStorage.setItem('salonbook_token', res.token);
+        setToken(res.token);
+      }
       localStorage.setItem('salonbook_user', JSON.stringify(res.user));
-      setToken(res.token);
       setUser(res.user);
       return res.user;
     }
     throw new Error('Google authentication failed.');
   };
 
-  const signOut = () => {
-    handleLogout();
-    toast.success('Signed out successfully');
-    router.push('/');
+  const signOut = async () => {
+    try {
+      await authClient.signOut().catch(() => {});
+    } finally {
+      handleLogout();
+      toast.success('Signed out successfully');
+      router.push('/');
+    }
   };
 
   const updateUser = (data: Partial<User>) => {
@@ -159,7 +177,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         isLoading,
         signIn,
         signUp,
-        googleSignIn,
+        signInWithGoogle,
+        googleTokenSignIn,
         signOut,
         refreshUser,
         updateUser,

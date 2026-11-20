@@ -18,7 +18,7 @@ export default function SignUpPage() {
   const [image, setImage] = useState('');
   const [imageInputMode, setImageInputMode] = useState<'upload' | 'url'>('upload');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { signUp, googleSignIn } = useAuth();
+  const { signUp, signInWithGoogle } = useAuth();
   const router = useRouter();
 
   // Password rules validation
@@ -63,19 +63,12 @@ export default function SignUpPage() {
     }
   };
 
-  const handleGoogleDemo = async () => {
+  const handleGoogleSignIn = async () => {
     setIsSubmitting(true);
     try {
-      const newUser = await googleSignIn({
-        name: 'Éléonore Moreau',
-        email: 'eleonore.moreau@gmail.com',
-        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
-      });
-      toast.success(`Registered with Google as ${newUser.name}`);
-      router.push('/dashboard/customer');
+      await signInWithGoogle();
     } catch (err) {
       toast.error((err as Error).message || 'Google registration failed.');
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -285,7 +278,7 @@ export default function SignUpPage() {
 
           <button
             type="button"
-            onClick={handleGoogleDemo}
+            onClick={handleGoogleSignIn}
             disabled={isSubmitting}
             className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-alabaster-300 bg-white hover:bg-alabaster-100 text-espresso-900 font-medium text-sm transition-colors shadow-sm"
           >

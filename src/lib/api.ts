@@ -86,24 +86,14 @@ export const api = {
 };
 
 export async function uploadImageToImgBB(file: File): Promise<string> {
-  const clientKey = process.env.NEXT_PUBLIC_IMGBB_API_KEY;
-
-  if (clientKey) {
-    const formData = new FormData();
-    formData.append('image', file);
-
-    const res = await fetch(`https://api.imgbb.com/1/upload?key=${clientKey}`, {
-      method: 'POST',
-      body: formData,
-    });
-
-    const result = await res.json();
-    if (res.ok && result.success) {
-      return result.data.url;
-    }
+  if (!file.type.startsWith('image/')) {
+    throw new Error('Please select a valid image file (JPEG, PNG, WEBP).');
   }
 
-  // Fallback to backend upload endpoint
+  if (file.size > 10 * 1024 * 1024) {
+    throw new Error('Image file size exceeds the 10MB maximum limit.');
+  }
+
   const formData = new FormData();
   formData.append('image', file);
 
@@ -119,7 +109,7 @@ export async function uploadImageToImgBB(file: File): Promise<string> {
 
   const result = await res.json();
   if (!res.ok || !result.success) {
-    throw new Error(result?.message || 'Failed to upload image to ImgBB');
+    throw new Error(result?.message || 'Failed to upload image to ImgBB.');
   }
 
   return result.url;

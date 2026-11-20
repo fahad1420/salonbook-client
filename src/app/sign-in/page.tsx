@@ -13,7 +13,7 @@ function SignInContent() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { signIn, googleSignIn } = useAuth();
+  const { signIn, signInWithGoogle } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get('redirect');
@@ -62,19 +62,12 @@ function SignInContent() {
     }
   };
 
-  const handleGoogleDemo = async () => {
+  const handleGoogleSignIn = async () => {
     setIsSubmitting(true);
     try {
-      const loggedUser = await googleSignIn({
-        name: 'Camille Dupont',
-        email: 'camille.dupont@gmail.com',
-        image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
-      });
-      toast.success(`Signed in with Google as ${loggedUser.name}`);
-      handleRoleRedirect(loggedUser.role);
+      await signInWithGoogle();
     } catch (err) {
-      toast.error((err as Error).message || 'Google sign in failed.');
-    } finally {
+      toast.error((err as Error).message || 'Failed to initiate Google sign-in.');
       setIsSubmitting(false);
     }
   };
@@ -189,7 +182,7 @@ function SignInContent() {
 
           <button
             type="button"
-            onClick={handleGoogleDemo}
+            onClick={handleGoogleSignIn}
             disabled={isSubmitting}
             className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-alabaster-300 bg-white hover:bg-alabaster-100 text-espresso-900 font-medium text-sm transition-colors shadow-sm"
           >
