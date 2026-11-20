@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceCard from '@/components/ServiceCard';
 import ServiceSkeleton from '@/components/ServiceSkeleton';
+import ServiceImage from '@/components/ServiceImage';
 import { Service, SERVICE_CATEGORIES } from '@/types';
 import { api } from '@/lib/api';
 import {
@@ -315,9 +316,10 @@ export default function HomePage() {
                     className="group relative rounded-2xl overflow-hidden border border-alabaster-300 bg-alabaster-50 shadow-soft hover:shadow-luxury-hover transition-all duration-300 flex flex-col h-[280px]"
                   >
                     <div className="relative h-40 w-full overflow-hidden">
-                      <Image
+                      <ServiceImage
                         src={meta.image}
                         alt={cat}
+                        category={cat}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"

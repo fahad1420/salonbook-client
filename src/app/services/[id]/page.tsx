@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import ServiceImage from '@/components/ServiceImage';
 import { Service, SALON_TIME_SLOTS, SalonTimeSlot } from '@/types';
 import { useAuth } from '@/context/AuthContext';
 import { api, ApiError } from '@/lib/api';
@@ -257,9 +258,10 @@ export default function ServiceDetailPage() {
             {/* Left Column: Service Details & Photo */}
             <div className="lg:col-span-7 space-y-8">
               <div className="relative h-80 sm:h-[420px] w-full rounded-3xl overflow-hidden border border-alabaster-300 shadow-luxury">
-                <Image
+                <ServiceImage
                   src={service.image}
                   alt={service.serviceName}
+                  category={service.category}
                   fill
                   priority
                   className="object-cover"

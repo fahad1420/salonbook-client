@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import AdminSidebar from '@/components/AdminSidebar';
 import ImgBBUpload from '@/components/ImgBBUpload';
 import ConfirmModal from '@/components/ConfirmModal';
+import ServiceImage from '@/components/ServiceImage';
 import { useAuth } from '@/context/AuthContext';
 import { Service, SERVICE_CATEGORIES, ServiceCategory } from '@/types';
 import { api } from '@/lib/api';
@@ -276,9 +277,10 @@ export default function AdminServicesPage() {
                               <td className="py-4 pr-3">
                                 <div className="flex items-center gap-3">
                                   <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-alabaster-300 bg-stone-100">
-                                    <Image
+                                    <ServiceImage
                                       src={service.image}
                                       alt={service.serviceName}
+                                      category={service.category}
                                       fill
                                       className="object-cover"
                                     />
