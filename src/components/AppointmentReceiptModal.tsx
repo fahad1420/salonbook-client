@@ -171,17 +171,6 @@ export default function AppointmentReceiptModal({
                       ${appointment.servicePrice}.00
                     </td>
                   </tr>
-                  <tr>
-                    <td className="py-2.5 px-4 text-stone-600">
-                      Hospital-Grade Autoclave Sterilization &amp; Suite Linen
-                    </td>
-                    <td className="py-2.5 px-4 text-center text-emerald-600 font-medium">
-                      Atelier Courtesy
-                    </td>
-                    <td className="py-2.5 px-4 text-right text-emerald-600 font-medium">
-                      $0.00
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>

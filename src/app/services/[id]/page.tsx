@@ -287,11 +287,11 @@ export default function ServiceDetailPage() {
                     </span>
                     <span>&bull;</span>
                     <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-                      Medical-Grade Sterilization
+                      Active Catalog
                     </span>
                     <span>&bull;</span>
                     <span className="text-champagne-700 bg-champagne-50 px-2.5 py-0.5 rounded-full border border-champagne-200">
-                      Private Suite
+                      Scheduled Window
                     </span>
                   </div>
 
@@ -475,10 +475,6 @@ export default function ServiceDetailPage() {
                       <span>Service Fee</span>
                       <span>${service.price}.00</span>
                     </div>
-                    <div className="flex justify-between text-stone-600">
-                      <span>Hygiene &amp; Linen Fee</span>
-                      <span className="text-emerald-700 font-medium">Complimentary</span>
-                    </div>
                     <div className="pt-2 border-t border-alabaster-300 flex justify-between font-semibold text-espresso-950 text-sm">
                       <span>Total Due (Upon Confirmation)</span>
                       <span>${service.price}.00</span>
@@ -505,7 +501,7 @@ export default function ServiceDetailPage() {
 
                   <div className="flex items-center gap-2 text-[11px] text-stone-500 justify-center">
                     <Info className="w-3.5 h-3.5 text-stone-400" />
-                    <span>No charge today. Payment requested once confirmed by concierge.</span>
+                    <span>No charge upon submission. Online payment via Stripe is requested after admin confirmation.</span>
                   </div>
                 </form>
               </div>

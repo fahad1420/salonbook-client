@@ -120,7 +120,7 @@ const WHY_SALONBOOK_BENEFITS = [
   {
     title: 'Convenient Appointment Booking',
     description:
-      'Real-time availability validation guarantees your selected slot is locked with zero scheduling conflicts.',
+      'Dynamic availability queries help ensure your selected time slot is available before submission.',
     icon: CalendarCheck,
   },
   {
@@ -138,7 +138,7 @@ const WHY_SALONBOOK_BENEFITS = [
   {
     title: 'Secure Online Payment',
     description:
-      'Contactless Stripe Checkout integration with automated signature-verified webhook confirmation.',
+      'Stripe Checkout integration with automated signature-verified webhook confirmation.',
     icon: Lock,
   },
   {
@@ -151,15 +151,15 @@ const WHY_SALONBOOK_BENEFITS = [
 
 const POLICIES_STANDARDS = [
   {
-    title: 'Clinical Tool Sterilization',
+    title: 'Administrative Booking Review',
     description:
-      'All precision metal instruments undergo medical autoclave sterilization before every single appointment.',
+      'Every appointment request is initially received in pending status for administrative confirmation before payment.',
     icon: ShieldCheck,
   },
   {
-    title: 'Transparent Upfront Pricing',
+    title: 'Clear Duration & Pricing',
     description:
-      'Every service displays its exact investment and duration upfront. No hidden chair fees or unexpected charges.',
+      'Every service displays its exact fee and duration in minutes upfront so you can plan your schedule.',
     icon: Award,
   },
   {
@@ -209,17 +209,17 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-6 text-xs text-stone-600 font-medium">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-champagne-100/90 text-champagne-700 border border-champagne-300">
                 <CheckCircle2 className="w-3.5 h-3.5 text-champagne-600" />
-                Verified Salon Appointments
+                Scheduled Appointments
               </span>
               <span className="hidden sm:inline-block text-stone-300">•</span>
               <span className="inline-flex items-center gap-1 text-stone-600">
                 <Calendar className="w-4 h-4 text-champagne-600" />
-                Real-Time Slot Availability
+                Predefined Time Windows
               </span>
               <span className="hidden sm:inline-block text-stone-300">•</span>
               <span className="inline-flex items-center gap-1 text-stone-600">
                 <Lock className="w-4 h-4 text-champagne-600" />
-                Contactless Stripe Checkout
+                Stripe Payment Checkout
               </span>
             </div>
 
@@ -259,15 +259,15 @@ export default function HomePage() {
                   </a>
                 </div>
 
-                {/* Platform Guarantees */}
+                {/* Platform Highlights */}
                 <div className="pt-8 border-t border-alabaster-300 grid grid-cols-3 gap-4 text-left">
                   <div className="flex items-center gap-2.5">
                     <div className="w-8 h-8 rounded-full bg-champagne-100 flex items-center justify-center text-champagne-700 flex-shrink-0">
                       <ShieldCheck className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-espresso-950">Hygiene First</p>
-                      <p className="text-[11px] text-stone-500">Sterilized Implements</p>
+                      <p className="text-xs font-semibold text-espresso-950">Review Protocol</p>
+                      <p className="text-[11px] text-stone-500">Admin Confirmation</p>
                     </div>
                   </div>
 
@@ -557,13 +557,13 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
               <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
-                Operating Policies
+                Operating Guidelines
               </span>
               <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
-                Our Standards &amp; Client Policies
+                Platform Policies &amp; Client Standards
               </h2>
               <p className="text-stone-500 text-sm leading-relaxed">
-                Clear expectations, clinical hygiene standards, and client-first cancellation policies.
+                Clear booking expectations, administrative review protocol, and self-service cancellation rules.
               </p>
             </div>
 

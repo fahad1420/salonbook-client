@@ -193,7 +193,7 @@ export default function CustomerDashboardPage() {
                   </h3>
 
                   <p className="text-xs text-stone-500 leading-relaxed">
-                    You have <span className="font-semibold text-espresso-950">{stats.confirmed}</span> confirmed salon visit(s) scheduled. Concierge confirmation guarantees private suite preparation and master stylist assignment.
+                    You have <span className="font-semibold text-espresso-950">{stats.confirmed}</span> confirmed salon visit(s) scheduled. You can complete secure Stripe payment for any confirmed booking.
                   </p>
 
                   <div className="space-y-1.5 pt-2">

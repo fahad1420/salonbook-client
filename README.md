@@ -37,7 +37,7 @@ High-end, bespoke appointment booking platform for **SalonBook**, designed with 
   4. Confirm Appointment
   5. Complete Payment (once confirmed)
 - **Why SalonBook:** Real platform benefits covering convenient booking, transparent pricing, appointment management, secure Stripe checkout, and isolated customer portals.
-- **Operating Standards & Policies:** Sterilization protocols, clear session durations, and client self-service cancellation rules.
+- **Operating Standards & Policies:** Administrative review protocol, clear session durations, and client self-service cancellation rules.
 
 ### 2. Treatment Discovery & Booking Flow
 - **Browse Services (`/services`):** Live URL-synced search, category filtering pills, price sorting (`price_asc` / `price_desc`), pagination, and skeleton loading states.

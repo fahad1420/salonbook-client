@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Logo variant="light" size="md" />
             <p className="text-stone-400 text-sm leading-relaxed">
-              Curating elevated salon and spa rituals with transparent pricing, guaranteed time allocations, and seamless digital reservations.
+              Curating salon and spa treatments with transparent pricing, predefined time allocations, and convenient digital reservations.
             </p>
             <div className="pt-2 flex items-center gap-2 text-xs text-champagne-400 font-medium">
               <ShieldCheck className="w-4 h-4 text-champagne-400 shrink-0" />
@@ -145,7 +145,7 @@ export default function Footer() {
               Terms &amp; Conditions
             </span>
             <span className="hover:text-stone-300 transition-colors cursor-pointer">
-              Hygiene Standards
+              Platform Standards
             </span>
           </div>
         </div>
