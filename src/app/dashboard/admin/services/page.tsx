@@ -201,7 +201,7 @@ export default function AdminServicesPage() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex flex-col bg-alabaster-100">
+      <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950">
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <Loader2 className="w-8 h-8 text-champagne-600 animate-spin" />
@@ -212,29 +212,29 @@ export default function AdminServicesPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div className="space-y-1">
-              <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700">
+              <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
                 Atelier Catalog
               </span>
-              <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+              <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                 Manage Salon Services
               </h1>
-              <p className="text-stone-500 text-sm">
+              <p className="text-stone-500 dark:text-stone-400 text-sm">
                 Add new treatments with ImgBB cloud photos, edit fees, and toggle catalog visibility.
               </p>
             </div>
 
             <button
               onClick={handleOpenCreateModal}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold tracking-wide transition-all shadow-sm self-start md:self-auto"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 text-xs font-semibold tracking-wide transition-all shadow-sm self-start md:self-auto"
             >
-              <PlusCircle className="w-4 h-4 text-champagne-400" />
+              <PlusCircle className="w-4 h-4 text-champagne-400 dark:text-stone-950" />
               <span>Create New Service</span>
             </button>
           </div>
@@ -244,9 +244,9 @@ export default function AdminServicesPage() {
 
             <div className="flex-1 w-full space-y-6">
               {/* Services Table Card */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-sm space-y-6">
+              <div className="bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-alabaster-300 dark:border-stone-800 shadow-sm space-y-6">
                 <div className="flex items-center justify-between">
-                  <h2 className="font-serif text-xl font-medium text-espresso-950">
+                  <h2 className="font-serif text-xl font-medium text-espresso-950 dark:text-alabaster-50">
                     All Services ({services.length})
                   </h2>
                 </div>
@@ -254,13 +254,13 @@ export default function AdminServicesPage() {
                 {isLoading ? (
                   <div className="py-16 flex flex-col items-center justify-center gap-3">
                     <Loader2 className="w-7 h-7 text-champagne-600 animate-spin" />
-                    <p className="text-xs text-stone-500">Loading catalog...</p>
+                    <p className="text-xs text-stone-500 dark:text-stone-400">Loading catalog...</p>
                   </div>
                 ) : services.length > 0 ? (
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs">
                       <thead>
-                        <tr className="border-b border-alabaster-200 text-stone-400 uppercase tracking-wider font-semibold">
+                        <tr className="border-b border-alabaster-200 dark:border-stone-800 text-stone-400 dark:text-stone-500 uppercase tracking-wider font-semibold">
                           <th className="pb-3">Service</th>
                           <th className="pb-3">Category</th>
                           <th className="pb-3">Price</th>
@@ -269,14 +269,14 @@ export default function AdminServicesPage() {
                           <th className="pb-3 text-right">Actions</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-alabaster-200">
+                      <tbody className="divide-y divide-alabaster-200 dark:divide-stone-800">
                         {services.map((service) => {
                           const isActive = service.status === 'active';
                           return (
-                            <tr key={service._id} className="hover:bg-alabaster-50/70 transition-colors">
+                            <tr key={service._id} className="hover:bg-alabaster-50/70 dark:hover:bg-stone-800/40 transition-colors">
                               <td className="py-4 pr-3">
                                 <div className="flex items-center gap-3">
-                                  <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-alabaster-300 bg-stone-100">
+                                  <div className="relative w-12 h-12 rounded-xl overflow-hidden shrink-0 border border-alabaster-300 dark:border-stone-700 bg-stone-100 dark:bg-stone-800">
                                     <ServiceImage
                                       src={service.image}
                                       alt={service.serviceName}
@@ -286,24 +286,24 @@ export default function AdminServicesPage() {
                                     />
                                   </div>
                                   <div className="min-w-0 max-w-[200px]">
-                                    <p className="font-semibold text-espresso-950 text-sm truncate">
+                                    <p className="font-semibold text-espresso-950 dark:text-alabaster-100 text-sm truncate">
                                       {service.serviceName}
                                     </p>
-                                    <p className="text-[11px] text-stone-500 line-clamp-1">
+                                    <p className="text-[11px] text-stone-500 dark:text-stone-400 line-clamp-1">
                                       {service.description}
                                     </p>
                                   </div>
                                 </div>
                               </td>
-                              <td className="py-4 pr-3 text-stone-600">
-                                <span className="text-[10px] font-semibold uppercase tracking-wider bg-champagne-100 text-champagne-700 px-2 py-0.5 rounded-full border border-champagne-200 whitespace-nowrap">
+                              <td className="py-4 pr-3 text-stone-600 dark:text-stone-300">
+                                <span className="text-[10px] font-semibold uppercase tracking-wider bg-champagne-100 dark:bg-champagne-950/60 text-champagne-700 dark:text-champagne-300 px-2 py-0.5 rounded-full border border-champagne-200 dark:border-champagne-800 whitespace-nowrap">
                                   {service.category}
                                 </span>
                               </td>
-                              <td className="py-4 pr-3 font-semibold text-espresso-950 text-sm">
+                              <td className="py-4 pr-3 font-semibold text-espresso-950 dark:text-alabaster-100 text-sm">
                                 ${service.price}
                               </td>
-                              <td className="py-4 pr-3 text-stone-600">
+                              <td className="py-4 pr-3 text-stone-600 dark:text-stone-300">
                                 {service.duration} mins
                               </td>
                               <td className="py-4 pr-3">
@@ -314,12 +314,12 @@ export default function AdminServicesPage() {
                                   title="Toggle status"
                                 >
                                   {isActive ? (
-                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100">
+                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/40 hover:bg-emerald-100">
                                       <CheckCircle2 className="w-3 h-3" />
                                       Active
                                     </span>
                                   ) : (
-                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-stone-100 text-stone-500 border border-stone-200 hover:bg-stone-200">
+                                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 hover:bg-stone-200">
                                       <AlertCircle className="w-3 h-3" />
                                       Inactive
                                     </span>
@@ -329,14 +329,14 @@ export default function AdminServicesPage() {
                               <td className="py-4 text-right space-x-1.5 whitespace-nowrap">
                                 <button
                                   onClick={() => handleOpenEditModal(service)}
-                                  className="p-1.5 rounded-xl border border-alabaster-300 hover:bg-alabaster-100 text-stone-600 hover:text-espresso-950 transition-colors"
+                                  className="p-1.5 rounded-xl border border-alabaster-300 dark:border-stone-700 hover:bg-alabaster-100 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-300 hover:text-espresso-950 dark:hover:text-alabaster-100 transition-colors"
                                   title="Edit Service"
                                 >
                                   <Edit2 className="w-4 h-4" />
                                 </button>
                                 <button
                                   onClick={() => setDeletingService(service)}
-                                  className="p-1.5 rounded-xl border border-rose-200 text-rose-600 hover:bg-rose-50 transition-colors"
+                                  className="p-1.5 rounded-xl border border-rose-200 dark:border-rose-900/50 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors"
                                   title="Delete Service"
                                 >
                                   <Trash2 className="w-4 h-4" />
@@ -362,19 +362,19 @@ export default function AdminServicesPage() {
       {/* Add / Update Service Modal (Mandatory ImgBB file upload ONLY) */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
-          <div className="w-full max-w-xl bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-2xl space-y-6 my-8">
-            <div className="flex items-center justify-between border-b border-alabaster-200 pb-4">
+          <div className="w-full max-w-xl bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-alabaster-300 dark:border-stone-800 shadow-2xl space-y-6 my-8">
+            <div className="flex items-center justify-between border-b border-alabaster-200 dark:border-stone-800 pb-4">
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-champagne-700">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
                   {editingService ? 'Modify Offering' : 'New Atelier Offering'}
                 </span>
-                <h3 className="font-serif text-2xl font-medium text-espresso-950">
+                <h3 className="font-serif text-2xl font-medium text-espresso-950 dark:text-alabaster-50">
                   {editingService ? 'Edit Salon Service' : 'Add Salon Service'}
                 </h3>
               </div>
               <button
                 onClick={() => setIsModalOpen(false)}
-                className="p-1.5 rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100"
+                className="p-1.5 rounded-full text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:text-stone-200 dark:hover:bg-stone-800"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -383,7 +383,7 @@ export default function AdminServicesPage() {
             <form onSubmit={handleSubmitService} className="space-y-5">
               {/* Service Name */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                   Service Name <span className="text-rose-600">*</span>
                 </label>
                 <input
@@ -392,22 +392,22 @@ export default function AdminServicesPage() {
                   value={serviceName}
                   onChange={(e) => setServiceName(e.target.value)}
                   placeholder="e.g. Artisanal Precision Haircut & Blowout"
-                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none"
                 />
               </div>
 
               {/* Category */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                   Category <span className="text-rose-600">*</span>
                 </label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value as ServiceCategory)}
-                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none"
+                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none"
                 >
                   {SERVICE_CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>
+                    <option key={cat} value={cat} className="dark:bg-stone-900">
                       {cat}
                     </option>
                   ))}
@@ -417,7 +417,7 @@ export default function AdminServicesPage() {
               {/* Price & Duration */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                     Price (USD) <span className="text-rose-600">*</span>
                   </label>
                   <input
@@ -427,11 +427,11 @@ export default function AdminServicesPage() {
                     value={price}
                     onChange={(e) => setPrice(e.target.value === '' ? '' : Number(e.target.value))}
                     placeholder="120"
-                    className="w-full px-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                     Duration (Minutes) <span className="text-rose-600">*</span>
                   </label>
                   <input
@@ -441,7 +441,7 @@ export default function AdminServicesPage() {
                     value={duration}
                     onChange={(e) => setDuration(e.target.value === '' ? '' : Number(e.target.value))}
                     placeholder="60"
-                    className="w-full px-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none"
+                    className="w-full px-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none"
                   />
                 </div>
               </div>
@@ -460,7 +460,7 @@ export default function AdminServicesPage() {
 
               {/* Description */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                   Description <span className="text-rose-600">*</span>
                 </label>
                 <textarea
@@ -469,17 +469,17 @@ export default function AdminServicesPage() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Detail the botanical compounds, techniques, and client experience..."
-                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none resize-none"
+                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none resize-none"
                 />
               </div>
 
               {/* Status Radio */}
               <div className="space-y-1.5">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                   Publishing Status
                 </label>
                 <div className="flex items-center gap-4">
-                  <label className="flex items-center gap-2 text-xs font-medium text-stone-700 cursor-pointer">
+                  <label className="flex items-center gap-2 text-xs font-medium text-stone-700 dark:text-stone-300 cursor-pointer">
                     <input
                       type="radio"
                       name="status"
@@ -490,7 +490,7 @@ export default function AdminServicesPage() {
                     />
                     <span>Active (Bookable)</span>
                   </label>
-                  <label className="flex items-center gap-2 text-xs font-medium text-stone-700 cursor-pointer">
+                  <label className="flex items-center gap-2 text-xs font-medium text-stone-700 dark:text-stone-300 cursor-pointer">
                     <input
                       type="radio"
                       name="status"
@@ -505,19 +505,19 @@ export default function AdminServicesPage() {
               </div>
 
               {/* Form Buttons */}
-              <div className="flex items-center justify-end gap-3 pt-4 border-t border-alabaster-200">
+              <div className="flex items-center justify-end gap-3 pt-4 border-t border-alabaster-200 dark:border-stone-800">
                 <button
                   type="button"
                   disabled={isSubmitting}
                   onClick={() => setIsModalOpen(false)}
-                  className="px-5 py-2.5 rounded-full border border-alabaster-300 text-stone-700 text-xs font-semibold hover:bg-alabaster-100"
+                  className="px-5 py-2.5 rounded-full border border-alabaster-300 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-xs font-semibold hover:bg-alabaster-100 dark:hover:bg-stone-800"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSubmitting || !image}
-                  className="px-6 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold shadow-md flex items-center gap-2 disabled:opacity-50"
+                  className="px-6 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 text-xs font-semibold shadow-md flex items-center gap-2 disabled:opacity-50"
                 >
                   {isSubmitting && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                   <span>{editingService ? 'Update Service' : 'Publish Service'}</span>

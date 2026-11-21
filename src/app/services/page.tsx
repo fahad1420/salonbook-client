@@ -129,27 +129,27 @@ function ServicesContent() {
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           {/* Editorial Page Header */}
           <header className="text-center max-w-3xl mx-auto space-y-3.5">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne-100 text-champagne-800 text-xs font-semibold tracking-wider uppercase border border-champagne-300 shadow-soft">
-              <CalendarCheck className="w-3.5 h-3.5 text-champagne-600" />
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-champagne-100 dark:bg-champagne-950/40 text-champagne-800 dark:text-champagne-300 text-xs font-semibold tracking-wider uppercase border border-champagne-300 dark:border-champagne-800/40 shadow-soft">
+              <CalendarCheck className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
               <span>Full Atelier Menu &bull; Curated Services</span>
             </div>
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-espresso-950">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
               Browse Salon &amp; Spa Treatments
             </h1>
-            <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+            <p className="text-stone-600 dark:text-stone-300 text-sm sm:text-base leading-relaxed">
               Explore our salon services, filter by category, and reserve an available appointment time slot.
             </p>
           </header>
 
           {/* Search, Filter & Sort Console */}
-          <section className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-soft space-y-6">
+          <section className="bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-alabaster-300 dark:border-stone-800 shadow-soft space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
               {/* Search Input */}
               <div className="md:col-span-8 relative">
@@ -159,12 +159,12 @@ function ServicesContent() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search treatments by name (e.g. Balayage, Precision Cut, Caviar, Facial)..."
-                  className="w-full pl-11 pr-10 py-3.5 rounded-2xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-alabaster-50/60 text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full pl-11 pr-10 py-3.5 rounded-2xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-alabaster-50/60 dark:bg-stone-800/60 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
                 {searchTerm && (
                   <button
                     onClick={() => setSearchTerm('')}
-                    className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-espresso-950 transition-colors"
+                    className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 text-stone-400 hover:text-espresso-950 dark:hover:text-alabaster-50 transition-colors"
                     aria-label="Clear search input"
                   >
                     <X className="w-4 h-4" />
@@ -178,19 +178,19 @@ function ServicesContent() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="w-full pl-11 pr-10 py-3.5 rounded-2xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-alabaster-50/60 text-sm text-espresso-900 outline-none appearance-none cursor-pointer transition-colors"
+                  className="w-full pl-11 pr-10 py-3.5 rounded-2xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-alabaster-50/60 dark:bg-stone-800/60 text-sm text-espresso-900 dark:text-alabaster-50 outline-none appearance-none cursor-pointer transition-colors"
                 >
-                  <option value="default">Sort by: Curated Featured</option>
-                  <option value="price_asc">Price: Low to High</option>
-                  <option value="price_desc">Price: High to Low</option>
+                  <option value="default" className="dark:bg-stone-900">Sort by: Curated Featured</option>
+                  <option value="price_asc" className="dark:bg-stone-900">Price: Low to High</option>
+                  <option value="price_desc" className="dark:bg-stone-900">Price: High to Low</option>
                 </select>
               </div>
             </div>
 
             {/* Category Filter Pills */}
             <div className="space-y-3">
-              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500">
-                <SlidersHorizontal className="w-3.5 h-3.5 text-champagne-600" />
+              <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
+                <SlidersHorizontal className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                 <span>Filter by Atelier Discipline</span>
               </div>
 
@@ -200,8 +200,8 @@ function ServicesContent() {
                   onClick={() => setSelectedCategory('all')}
                   className={`px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all ${
                     selectedCategory === 'all'
-                      ? 'bg-espresso-900 text-alabaster-100 shadow-sm'
-                      : 'bg-alabaster-100 text-stone-700 hover:bg-alabaster-200 border border-alabaster-300'
+                      ? 'bg-espresso-900 dark:bg-champagne-500 text-alabaster-100 dark:text-stone-950 shadow-sm'
+                      : 'bg-alabaster-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-alabaster-200 dark:hover:bg-stone-700 border border-alabaster-300 dark:border-stone-700'
                   }`}
                 >
                   All Disciplines
@@ -213,8 +213,8 @@ function ServicesContent() {
                     onClick={() => setSelectedCategory(cat)}
                     className={`px-4 py-2 rounded-full text-xs font-medium tracking-wide transition-all ${
                       selectedCategory === cat
-                        ? 'bg-espresso-900 text-alabaster-100 shadow-sm'
-                        : 'bg-alabaster-100 text-stone-700 hover:bg-alabaster-200 border border-alabaster-300'
+                        ? 'bg-espresso-900 dark:bg-champagne-500 text-alabaster-100 dark:text-stone-950 shadow-sm'
+                        : 'bg-alabaster-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-alabaster-200 dark:hover:bg-stone-700 border border-alabaster-300 dark:border-stone-700'
                     }`}
                   >
                     {cat}
@@ -225,11 +225,11 @@ function ServicesContent() {
 
             {/* Active Filters Summary Bar */}
             {hasActiveFilters && (
-              <div className="pt-3 border-t border-alabaster-200 flex flex-wrap items-center justify-between gap-3 text-xs">
-                <div className="flex flex-wrap items-center gap-2 text-stone-600">
-                  <span className="font-medium text-stone-400 uppercase tracking-wider text-[11px]">Active Filters:</span>
+              <div className="pt-3 border-t border-alabaster-200 dark:border-stone-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div className="flex flex-wrap items-center gap-2 text-stone-600 dark:text-stone-300">
+                  <span className="font-medium text-stone-400 dark:text-stone-500 uppercase tracking-wider text-[11px]">Active Filters:</span>
                   {searchTerm && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-champagne-100 text-champagne-800 font-medium">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-champagne-100 dark:bg-champagne-950/60 text-champagne-800 dark:text-champagne-300 font-medium">
                       Search: &ldquo;{searchTerm}&rdquo;
                       <button onClick={() => setSearchTerm('')} aria-label="Remove search filter">
                         <X className="w-3 h-3 hover:text-rose-600" />
@@ -237,7 +237,7 @@ function ServicesContent() {
                     </span>
                   )}
                   {selectedCategory !== 'all' && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-champagne-100 text-champagne-800 font-medium">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-champagne-100 dark:bg-champagne-950/60 text-champagne-800 dark:text-champagne-300 font-medium">
                       {selectedCategory}
                       <button onClick={() => setSelectedCategory('all')} aria-label="Remove category filter">
                         <X className="w-3 h-3 hover:text-rose-600" />
@@ -245,7 +245,7 @@ function ServicesContent() {
                     </span>
                   )}
                   {sortBy !== 'default' && (
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-champagne-100 text-champagne-800 font-medium">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-champagne-100 dark:bg-champagne-950/60 text-champagne-800 dark:text-champagne-300 font-medium">
                       {sortBy === 'price_asc' ? 'Price: Low to High' : 'Price: High to Low'}
                       <button onClick={() => setSortBy('default')} aria-label="Reset sorting">
                         <X className="w-3 h-3 hover:text-rose-600" />
@@ -257,7 +257,7 @@ function ServicesContent() {
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="inline-flex items-center gap-1.5 text-xs text-rose-700 hover:text-rose-800 font-semibold transition-colors bg-rose-50 px-3 py-1.5 rounded-full border border-rose-200 hover:bg-rose-100"
+                  className="inline-flex items-center gap-1.5 text-xs text-rose-700 dark:text-rose-400 hover:text-rose-800 font-semibold transition-colors bg-rose-50 dark:bg-rose-950/40 px-3 py-1.5 rounded-full border border-rose-200 dark:border-rose-900/50 hover:bg-rose-100 dark:hover:bg-rose-900/40"
                 >
                   <RotateCcw className="w-3 h-3" />
                   <span>Reset All Filters</span>
@@ -268,9 +268,9 @@ function ServicesContent() {
 
           {/* Results Summary Bar */}
           <div className="flex items-center justify-between">
-            <p className="text-xs uppercase tracking-wider font-semibold text-stone-500">
+            <p className="text-xs uppercase tracking-wider font-semibold text-stone-500 dark:text-stone-400">
               Showing{' '}
-              <span className="text-espresso-950 font-bold">
+              <span className="text-espresso-950 dark:text-alabaster-100 font-bold">
                 {totalItems === 0
                   ? 0
                   : `${startIndex + 1}-${Math.min(startIndex + ITEMS_PER_PAGE, totalItems)} of ${totalItems}`}
@@ -288,21 +288,21 @@ function ServicesContent() {
             </div>
           ) : errorMessage ? (
             /* API Error State */
-            <div className="text-center py-16 bg-white rounded-3xl border border-rose-200 p-8 space-y-4 shadow-soft max-w-xl mx-auto">
-              <div className="w-14 h-14 rounded-full bg-rose-50 text-rose-600 flex items-center justify-center mx-auto border border-rose-200">
+            <div className="text-center py-16 bg-white dark:bg-stone-900 rounded-3xl border border-rose-200 dark:border-rose-900/50 p-8 space-y-4 shadow-soft max-w-xl mx-auto">
+              <div className="w-14 h-14 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto border border-rose-200 dark:border-rose-900/50">
                 <AlertCircle className="w-7 h-7" />
               </div>
-              <h2 className="font-serif text-2xl font-medium text-espresso-950">
+              <h2 className="font-serif text-2xl font-medium text-espresso-950 dark:text-alabaster-50">
                 Unable to Load Services Catalog
               </h2>
-              <p className="text-stone-500 text-sm leading-relaxed max-w-md mx-auto">
+              <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed max-w-md mx-auto">
                 {errorMessage} Please verify your connection or retry fetching our atelier offerings.
               </p>
               <div className="pt-2">
                 <button
                   type="button"
                   onClick={() => fetchServices()}
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold tracking-wide transition-all shadow-soft"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-espresso-900 dark:bg-champagne-500 hover:bg-espresso-800 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 text-xs font-semibold tracking-wide transition-all shadow-soft"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>Retry Connection</span>
@@ -327,7 +327,7 @@ function ServicesContent() {
                     type="button"
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={validPage <= 1}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-alabaster-300 bg-white text-xs font-medium text-espresso-900 hover:bg-alabaster-100 disabled:opacity-40 disabled:pointer-events-none transition-all shadow-sm"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-alabaster-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-medium text-espresso-900 dark:text-alabaster-100 hover:bg-alabaster-100 dark:hover:bg-stone-700 disabled:opacity-40 disabled:pointer-events-none transition-all shadow-sm"
                   >
                     <ChevronLeft className="w-4 h-4" />
                     <span>Previous</span>
@@ -344,8 +344,8 @@ function ServicesContent() {
                           onClick={() => setCurrentPage(pageNum)}
                           className={`w-9 h-9 rounded-full text-xs font-semibold transition-all ${
                             isActive
-                              ? 'bg-espresso-900 text-alabaster-100 shadow-sm'
-                              : 'bg-white text-stone-600 hover:bg-alabaster-200 border border-alabaster-300'
+                              ? 'bg-espresso-900 dark:bg-champagne-500 text-alabaster-100 dark:text-stone-950 shadow-sm'
+                              : 'bg-white dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-alabaster-200 dark:hover:bg-stone-700 border border-alabaster-300 dark:border-stone-700'
                           }`}
                         >
                           {pageNum}
@@ -358,7 +358,7 @@ function ServicesContent() {
                     type="button"
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={validPage >= totalPages}
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-alabaster-300 bg-white text-xs font-medium text-espresso-900 hover:bg-alabaster-100 disabled:opacity-40 disabled:pointer-events-none transition-all shadow-sm"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border border-alabaster-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-medium text-espresso-900 dark:text-alabaster-100 hover:bg-alabaster-100 dark:hover:bg-stone-700 disabled:opacity-40 disabled:pointer-events-none transition-all shadow-sm"
                   >
                     <span>Next</span>
                     <ChevronRight className="w-4 h-4" />
@@ -368,21 +368,21 @@ function ServicesContent() {
             </>
           ) : (
             /* Empty State */
-            <div className="text-center py-20 bg-white rounded-3xl border border-alabaster-300 p-8 space-y-4 shadow-soft max-w-xl mx-auto">
-              <div className="w-14 h-14 rounded-full bg-champagne-100 flex items-center justify-center text-champagne-700 mx-auto">
+            <div className="text-center py-20 bg-white dark:bg-stone-900 rounded-3xl border border-alabaster-300 dark:border-stone-800 p-8 space-y-4 shadow-soft max-w-xl mx-auto">
+              <div className="w-14 h-14 rounded-full bg-champagne-100 dark:bg-champagne-950/60 flex items-center justify-center text-champagne-700 dark:text-champagne-300 mx-auto">
                 <Search className="w-6 h-6" />
               </div>
-              <h2 className="font-serif text-2xl font-medium text-espresso-950">
+              <h2 className="font-serif text-2xl font-medium text-espresso-950 dark:text-alabaster-50">
                 No Matching Treatments Found
               </h2>
-              <p className="text-stone-500 text-sm leading-relaxed max-w-md mx-auto">
+              <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed max-w-md mx-auto">
                 We couldn&apos;t find any active salon treatments matching your query. Try clearing search keywords or switching atelier disciplines.
               </p>
               <div className="pt-2">
                 <button
                   type="button"
                   onClick={handleResetFilters}
-                  className="px-6 py-2.5 rounded-full bg-espresso-900 text-alabaster-100 text-xs font-semibold hover:bg-espresso-800 transition-colors shadow-soft"
+                  className="px-6 py-2.5 rounded-full bg-espresso-900 dark:bg-champagne-500 text-alabaster-100 dark:text-stone-950 text-xs font-semibold hover:bg-espresso-800 dark:hover:bg-champagne-400 transition-colors shadow-soft"
                 >
                   Clear All Filters
                 </button>
@@ -399,7 +399,7 @@ function ServicesContent() {
 
 export default function ServicesPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-alabaster-100" />}>
+    <Suspense fallback={<div className="min-h-screen bg-alabaster-100 dark:bg-stone-950" />}>
       <ServicesContent />
     </Suspense>
   );

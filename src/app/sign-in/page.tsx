@@ -85,43 +85,43 @@ function SignInContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-alabaster-300 shadow-xl shadow-stone-200/50">
+        <div className="w-full max-w-md space-y-8 bg-white dark:bg-stone-900 p-8 sm:p-10 rounded-3xl border border-alabaster-300 dark:border-stone-800 shadow-xl shadow-stone-200/50 dark:shadow-none">
           <div className="text-center space-y-2">
             <div className="flex justify-center mb-2">
               <LogoMonogram size={48} />
             </div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight text-espresso-950">
+            <h1 className="font-serif text-3xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
               Welcome to SalonBook
             </h1>
-            <p className="text-stone-500 text-sm">
+            <p className="text-stone-500 dark:text-stone-400 text-sm">
               Sign in to manage your appointments and bespoke atelier services.
             </p>
           </div>
 
           {/* Demo Account Quick Access */}
-          <div className="bg-alabaster-100 rounded-2xl p-4 border border-alabaster-300 space-y-2.5">
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-stone-500 text-center">
+          <div className="bg-alabaster-100 dark:bg-stone-800/60 rounded-2xl p-4 border border-alabaster-300 dark:border-stone-700 space-y-2.5">
+            <p className="text-[11px] font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400 text-center">
               Quick Demo Access
             </p>
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => handleDemoLogin('admin@salonbook.com', 'admin')}
-                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-white border border-alabaster-300 hover:border-champagne-500 text-xs font-medium text-espresso-900 hover:text-champagne-700 transition-colors shadow-sm"
+                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-white dark:bg-stone-800 border border-alabaster-300 dark:border-stone-700 hover:border-champagne-500 text-xs font-medium text-espresso-900 dark:text-alabaster-100 hover:text-champagne-700 dark:hover:text-champagne-400 transition-colors shadow-sm"
               >
-                <ShieldCheck className="w-3.5 h-3.5 text-champagne-600" />
+                <ShieldCheck className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                 <span>Admin Demo</span>
               </button>
               <button
                 type="button"
                 onClick={() => handleDemoLogin('vivienne@example.com', 'customer')}
-                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-white border border-alabaster-300 hover:border-champagne-500 text-xs font-medium text-espresso-900 hover:text-champagne-700 transition-colors shadow-sm"
+                className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-white dark:bg-stone-800 border border-alabaster-300 dark:border-stone-700 hover:border-champagne-500 text-xs font-medium text-espresso-900 dark:text-alabaster-100 hover:text-champagne-700 dark:hover:text-champagne-400 transition-colors shadow-sm"
               >
-                <UserCheck className="w-3.5 h-3.5 text-champagne-600" />
+                <UserCheck className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                 <span>Customer Demo</span>
               </button>
             </div>
@@ -129,7 +129,7 @@ function SignInContent() {
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                 Email Address
               </label>
               <div className="relative">
@@ -140,14 +140,14 @@ function SignInContent() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                   Password
                 </label>
               </div>
@@ -159,7 +159,7 @@ function SignInContent() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
               </div>
             </div>
@@ -167,7 +167,7 @@ function SignInContent() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 font-medium text-sm tracking-wide transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:pointer-events-none"
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 font-medium text-sm tracking-wide transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:pointer-events-none"
             >
               {isSubmitting ? (
                 <>
@@ -185,10 +185,10 @@ function SignInContent() {
 
           <div className="relative my-4">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-alabaster-300" />
+              <div className="w-full border-t border-alabaster-300 dark:border-stone-700" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-3 text-stone-500">Or continue with</span>
+              <span className="bg-white dark:bg-stone-900 px-3 text-stone-500 dark:text-stone-400">Or continue with</span>
             </div>
           </div>
 
@@ -196,7 +196,7 @@ function SignInContent() {
             type="button"
             onClick={handleGoogleSignIn}
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-alabaster-300 bg-white hover:bg-alabaster-100 text-espresso-900 font-medium text-sm transition-colors shadow-sm"
+            className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-alabaster-300 dark:border-stone-700 bg-white dark:bg-stone-800 hover:bg-alabaster-100 dark:hover:bg-stone-700 text-espresso-900 dark:text-alabaster-100 font-medium text-sm transition-colors shadow-sm"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path
@@ -219,11 +219,11 @@ function SignInContent() {
             <span>Google Account</span>
           </button>
 
-          <p className="text-center text-xs text-stone-500 pt-2">
+          <p className="text-center text-xs text-stone-500 dark:text-stone-400 pt-2">
             Don&apos;t have an account?{' '}
             <Link
               href="/sign-up"
-              className="font-semibold text-champagne-700 hover:text-champagne-800 underline underline-offset-4"
+              className="font-semibold text-champagne-700 dark:text-champagne-400 hover:text-champagne-800 underline underline-offset-4"
             >
               Reserve &amp; Sign Up
             </Link>
@@ -238,7 +238,7 @@ function SignInContent() {
 
 export default function SignInPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-alabaster-100" />}>
+    <Suspense fallback={<div className="min-h-screen bg-alabaster-100 dark:bg-stone-950" />}>
       <SignInContent />
     </Suspense>
   );

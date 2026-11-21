@@ -66,7 +66,7 @@ export default function CustomerProfilePage() {
 
   if (authLoading || !user) {
     return (
-      <div className="min-h-screen flex flex-col bg-alabaster-100">
+      <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950">
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <Loader2 className="w-8 h-8 text-champagne-600 animate-spin" />
@@ -77,19 +77,19 @@ export default function CustomerProfilePage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700">
+            <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
               Account Management
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 mt-1">
+            <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50 mt-1">
               Client Profile Settings
             </h1>
-            <p className="text-stone-500 text-sm">
+            <p className="text-stone-500 dark:text-stone-400 text-sm">
               Keep your contact details and atelier styling preferences up to date.
             </p>
           </div>
@@ -97,20 +97,20 @@ export default function CustomerProfilePage() {
           <div className="flex flex-col lg:flex-row gap-8 items-start">
             <CustomerSidebar />
 
-            <div className="flex-1 w-full bg-white rounded-3xl p-6 sm:p-10 border border-alabaster-300 shadow-sm space-y-8">
+            <div className="flex-1 w-full bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-10 border border-alabaster-300 dark:border-stone-800 shadow-sm space-y-8">
               <form onSubmit={handleSubmit} className="space-y-6 max-w-xl">
                 {/* Account Security Banner */}
-                <div className="p-4 rounded-2xl bg-alabaster-100 border border-alabaster-300 flex items-center justify-between text-xs">
+                <div className="p-4 rounded-2xl bg-alabaster-100 dark:bg-stone-800/60 border border-alabaster-300 dark:border-stone-700 flex items-center justify-between text-xs">
                   <div className="flex items-center gap-3">
-                    <Shield className="w-4 h-4 text-champagne-700" />
+                    <Shield className="w-4 h-4 text-champagne-700 dark:text-champagne-400" />
                     <div>
-                      <p className="font-semibold text-espresso-950">Security &amp; Role</p>
-                      <p className="text-stone-500">
+                      <p className="font-semibold text-espresso-950 dark:text-alabaster-50">Security &amp; Role</p>
+                      <p className="text-stone-500 dark:text-stone-400">
                         Role: <span className="font-semibold uppercase">{user.role}</span> &bull; Status: Active
                       </p>
                     </div>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 font-semibold text-[10px]">
+                  <span className="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-800/40 font-semibold text-[10px]">
                     <CheckCircle2 className="w-3 h-3" />
                     Verified
                   </span>
@@ -118,7 +118,7 @@ export default function CustomerProfilePage() {
 
                 {/* Email (Read-only) */}
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-stone-500">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400">
                     Email Address (Registered)
                   </label>
                   <div className="relative">
@@ -127,14 +127,14 @@ export default function CustomerProfilePage() {
                       type="email"
                       disabled
                       value={user.email}
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 bg-stone-50 text-stone-500 text-sm cursor-not-allowed outline-none"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 bg-stone-50 dark:bg-stone-800/50 text-stone-500 dark:text-stone-400 text-sm cursor-not-allowed outline-none"
                     />
                   </div>
                 </div>
 
                 {/* Full Name */}
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                     Full Name <span className="text-rose-600">*</span>
                   </label>
                   <div className="relative">
@@ -145,14 +145,14 @@ export default function CustomerProfilePage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Vivienne Laurent"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none transition-colors"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none transition-colors"
                     />
                   </div>
                 </div>
 
                 {/* Phone Number */}
                 <div className="space-y-1.5">
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                     Phone Number
                   </label>
                   <div className="relative">
@@ -162,7 +162,7 @@ export default function CustomerProfilePage() {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="Enter phone number"
-                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none transition-colors"
+                      className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none transition-colors"
                     />
                   </div>
                 </div>
@@ -170,17 +170,17 @@ export default function CustomerProfilePage() {
                 {/* Profile Photo */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                       Profile Avatar
                     </span>
-                    <div className="flex items-center gap-1 bg-alabaster-200 p-0.5 rounded-lg text-[11px] font-medium">
+                    <div className="flex items-center gap-1 bg-alabaster-200 dark:bg-stone-800 p-0.5 rounded-lg text-[11px] font-medium">
                       <button
                         type="button"
                         onClick={() => setImageMode('upload')}
                         className={`px-2 py-0.5 rounded-md transition-colors ${
                           imageMode === 'upload'
-                            ? 'bg-white text-espresso-950 shadow-xs'
-                            : 'text-stone-600'
+                            ? 'bg-white dark:bg-stone-700 text-espresso-950 dark:text-alabaster-50 shadow-xs'
+                            : 'text-stone-600 dark:text-stone-400'
                         }`}
                       >
                         ImgBB Upload
@@ -190,8 +190,8 @@ export default function CustomerProfilePage() {
                         onClick={() => setImageMode('url')}
                         className={`px-2 py-0.5 rounded-md transition-colors ${
                           imageMode === 'url'
-                            ? 'bg-white text-espresso-950 shadow-xs'
-                            : 'text-stone-600'
+                            ? 'bg-white dark:bg-stone-700 text-espresso-950 dark:text-alabaster-50 shadow-xs'
+                            : 'text-stone-600 dark:text-stone-400'
                         }`}
                       >
                         Image URL
@@ -213,7 +213,7 @@ export default function CustomerProfilePage() {
                       value={image}
                       onChange={(e) => setImage(e.target.value)}
                       placeholder="https://images.unsplash.com/..."
-                      className="w-full px-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none transition-colors"
+                      className="w-full px-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none transition-colors"
                     />
                   )}
                 </div>
@@ -222,7 +222,7 @@ export default function CustomerProfilePage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 font-medium text-sm tracking-wide transition-all shadow-md disabled:opacity-70"
+                    className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 font-medium text-sm tracking-wide transition-all shadow-md disabled:opacity-70"
                   >
                     {isSubmitting ? (
                       <>
@@ -231,7 +231,7 @@ export default function CustomerProfilePage() {
                       </>
                     ) : (
                       <>
-                        <Save className="w-4 h-4 text-champagne-400" />
+                        <Save className="w-4 h-4 text-champagne-400 dark:text-stone-950" />
                         <span>Save Profile Changes</span>
                       </>
                     )}

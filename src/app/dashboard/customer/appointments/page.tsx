@@ -109,7 +109,7 @@ export default function CustomerAppointmentsPage() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen flex flex-col bg-alabaster-100">
+      <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950">
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <Loader2 className="w-8 h-8 text-champagne-600 animate-spin" />
@@ -120,19 +120,19 @@ export default function CustomerAppointmentsPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
-            <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700">
+            <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
               Personal Schedule
             </span>
-            <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 mt-1">
+            <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50 mt-1">
               My Appointments
             </h1>
-            <p className="text-stone-500 text-sm">
+            <p className="text-stone-500 dark:text-stone-400 text-sm">
               Review your reserved sessions, settle confirmed bookings, or cancel pending requests.
             </p>
           </div>
@@ -142,15 +142,15 @@ export default function CustomerAppointmentsPage() {
 
             <div className="flex-1 w-full space-y-6">
               {/* Filter Tabs */}
-              <div className="bg-white rounded-2xl p-2 border border-alabaster-300 flex flex-wrap gap-1.5">
+              <div className="bg-white dark:bg-stone-900 rounded-2xl p-2 border border-alabaster-300 dark:border-stone-800 flex flex-wrap gap-1.5">
                 {(['all', 'pending', 'confirmed', 'cancelled'] as const).map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setFilter(tab)}
                     className={`px-4 py-2 rounded-xl text-xs font-semibold tracking-wider uppercase transition-all ${
                       filter === tab
-                        ? 'bg-espresso-900 text-alabaster-100 shadow-sm'
-                        : 'text-stone-600 hover:bg-alabaster-100'
+                        ? 'bg-espresso-900 dark:bg-champagne-500 text-alabaster-100 dark:text-stone-950 shadow-sm'
+                        : 'text-stone-600 dark:text-stone-400 hover:bg-alabaster-100 dark:hover:bg-stone-800'
                     }`}
                   >
                     {tab}
@@ -159,11 +159,11 @@ export default function CustomerAppointmentsPage() {
               </div>
 
               {/* Appointments List / Table */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-sm">
+              <div className="bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-alabaster-300 dark:border-stone-800 shadow-sm">
                 {isLoading ? (
                   <div className="py-16 flex flex-col items-center justify-center gap-3">
                     <Loader2 className="w-7 h-7 text-champagne-600 animate-spin" />
-                    <p className="text-xs text-stone-500">Loading appointments...</p>
+                    <p className="text-xs text-stone-500 dark:text-stone-400">Loading appointments...</p>
                   </div>
                 ) : filteredAppointments.length > 0 ? (
                   <div className="space-y-4">
@@ -181,11 +181,11 @@ export default function CustomerAppointmentsPage() {
                       return (
                         <div
                           key={appt._id}
-                          className="p-5 sm:p-6 rounded-2xl border border-alabaster-300 hover:border-champagne-300 transition-all bg-alabaster-50/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5"
+                          className="p-5 sm:p-6 rounded-2xl border border-alabaster-300 dark:border-stone-800 hover:border-champagne-300 dark:hover:border-champagne-700 transition-all bg-alabaster-50/40 dark:bg-stone-800/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5"
                         >
                           <div className="flex items-start gap-4 min-w-0">
                             {service?.image && (
-                              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-alabaster-300">
+                              <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden shrink-0 border border-alabaster-300 dark:border-stone-700">
                                 <Image
                                   src={service.image}
                                   alt={service.serviceName}
@@ -196,24 +196,24 @@ export default function CustomerAppointmentsPage() {
                             )}
 
                             <div className="space-y-1 min-w-0">
-                              <span className="text-[10px] font-semibold uppercase tracking-wider text-champagne-700 bg-champagne-100 px-2 py-0.5 rounded-full border border-champagne-200">
+                              <span className="text-[10px] font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-300 bg-champagne-100 dark:bg-champagne-950/60 px-2 py-0.5 rounded-full border border-champagne-200 dark:border-champagne-800">
                                 {service?.category || 'Atelier'}
                               </span>
-                              <h3 className="font-serif text-lg font-semibold text-espresso-950 truncate">
+                              <h3 className="font-serif text-lg font-semibold text-espresso-950 dark:text-alabaster-100 truncate">
                                 {service?.serviceName || 'Custom Treatment'}
                               </h3>
-                              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-stone-500">
-                                <span className="flex items-center gap-1 text-espresso-900 font-medium">
-                                  <Calendar className="w-3.5 h-3.5 text-champagne-600" />
+                              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-stone-500 dark:text-stone-400">
+                                <span className="flex items-center gap-1 text-espresso-900 dark:text-alabaster-100 font-medium">
+                                  <Calendar className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                                   {appt.appointmentDate}
                                 </span>
                                 <span>&bull;</span>
                                 <span className="flex items-center gap-1">
-                                  <Clock className="w-3.5 h-3.5 text-champagne-600" />
+                                  <Clock className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                                   {appt.timeSlot}
                                 </span>
                                 <span>&bull;</span>
-                                <span className="font-semibold text-espresso-950">
+                                <span className="font-semibold text-espresso-950 dark:text-alabaster-100">
                                   ${appt.servicePrice}
                                 </span>
                               </div>
@@ -224,17 +224,17 @@ export default function CustomerAppointmentsPage() {
                           <div className="flex flex-wrap items-center gap-3 self-end sm:self-center">
                             <div className="flex flex-col items-end gap-1">
                               {appt.status === 'confirmed' ? (
-                                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/40">
                                   <CheckCircle2 className="w-3 h-3" />
                                   Confirmed
                                 </span>
                               ) : appt.status === 'cancelled' ? (
-                                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200">
+                                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-900/40">
                                   <AlertCircle className="w-3 h-3" />
                                   Cancelled
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
+                                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900/40">
                                   <Clock className="w-3 h-3" />
                                   Pending
                                 </span>
@@ -243,8 +243,8 @@ export default function CustomerAppointmentsPage() {
                               <span
                                 className={`text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full ${
                                   appt.paymentStatus === 'paid'
-                                    ? 'bg-emerald-100 text-emerald-800'
-                                    : 'bg-stone-100 text-stone-500'
+                                    ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300'
+                                    : 'bg-stone-100 dark:bg-stone-800 text-stone-500 dark:text-stone-400'
                                 }`}
                               >
                                 {appt.paymentStatus === 'paid' ? 'Paid in Full' : 'Unpaid'}
@@ -254,29 +254,29 @@ export default function CustomerAppointmentsPage() {
                             <div className="flex items-center gap-2 pt-2 sm:pt-0">
                               <button
                                 onClick={() => setSelectedAppointment(appt)}
-                                className="p-2 rounded-xl border border-alabaster-300 hover:bg-white text-stone-700 transition-colors"
+                                className="p-2 rounded-xl border border-alabaster-300 dark:border-stone-700 hover:bg-white dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors"
                                 title="View Details"
                               >
                                 <Eye className="w-4 h-4" />
                               </button>
 
-                              {/* Official Receipt (Shown for any paid appointment) */}
+                              {/* Official Receipt */}
                               {appt.paymentStatus === 'paid' && (
                                 <button
                                   onClick={() => setSelectedReceipt(appt)}
-                                  className="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-alabaster-100 hover:bg-alabaster-200 text-espresso-950 text-xs font-medium border border-alabaster-300 transition-colors"
+                                  className="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-alabaster-100 dark:bg-stone-800 hover:bg-alabaster-200 dark:hover:bg-stone-700 text-espresso-950 dark:text-alabaster-100 text-xs font-medium border border-alabaster-300 dark:border-stone-700 transition-colors"
                                   title="View Official Digital Receipt"
                                 >
-                                  <Receipt className="w-3.5 h-3.5 text-champagne-600" />
+                                  <Receipt className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                                   <span>Receipt</span>
                                 </button>
                               )}
 
-                              {/* Self Cancellation (Allowed ONLY for own pending appointments) */}
+                              {/* Self Cancellation */}
                               {isPending && (
                                 <button
                                   onClick={() => setCancellingAppt(appt)}
-                                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-rose-200 text-rose-700 hover:bg-rose-50 text-xs font-semibold transition-colors"
+                                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl border border-rose-200 dark:border-rose-900/50 text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/40 text-xs font-semibold transition-colors"
                                   title="Cancel Appointment"
                                 >
                                   <Ban className="w-3.5 h-3.5" />
@@ -284,13 +284,13 @@ export default function CustomerAppointmentsPage() {
                                 </button>
                               )}
 
-                              {/* Pay Now (Shown ONLY when status === confirmed AND paymentStatus === unpaid) */}
+                              {/* Pay Now */}
                               {canPay && (
                                 <button
                                   onClick={() => handlePayNow(appt._id)}
-                                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-espresso-900 text-alabaster-100 hover:bg-espresso-800 text-xs font-semibold tracking-wide transition-all shadow-sm"
+                                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 text-xs font-semibold tracking-wide transition-all shadow-sm"
                                 >
-                                  <CreditCard className="w-3.5 h-3.5 text-champagne-400" />
+                                  <CreditCard className="w-3.5 h-3.5 text-champagne-400 dark:text-stone-950" />
                                   <span>Pay Now</span>
                                 </button>
                               )}
@@ -302,14 +302,14 @@ export default function CustomerAppointmentsPage() {
                   </div>
                 ) : (
                   <div className="text-center py-16 space-y-3">
-                    <p className="text-stone-500 text-sm">
+                    <p className="text-stone-500 dark:text-stone-400 text-sm">
                       No appointments matching &ldquo;{filter}&rdquo; status.
                     </p>
                     <Link
                       href="/services"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-espresso-900 text-white text-xs font-semibold"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-white dark:text-stone-950 text-xs font-semibold"
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-champagne-400" />
+                      <Sparkles className="w-3.5 h-3.5 text-champagne-400 dark:text-stone-950" />
                       <span>Book a Treatment</span>
                     </Link>
                   </div>

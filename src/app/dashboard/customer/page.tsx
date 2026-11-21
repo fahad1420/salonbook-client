@@ -98,7 +98,7 @@ export default function CustomerDashboardPage() {
 
   if (authLoading || (!user && isLoading)) {
     return (
-      <div className="min-h-screen flex flex-col bg-alabaster-100">
+      <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950">
         <Navbar />
         <main className="flex-1 flex items-center justify-center">
           <Loader2 className="w-8 h-8 text-champagne-600 animate-spin" />
@@ -113,7 +113,7 @@ export default function CustomerDashboardPage() {
   const pendingPct = Math.round((stats.pending / total) * 100);
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 py-10 md:py-14">
@@ -121,22 +121,22 @@ export default function CustomerDashboardPage() {
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
             <div className="space-y-1">
-              <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700">
+              <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
                 Client Portal
               </span>
-              <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+              <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                 Welcome, {user?.name}
               </h1>
-              <p className="text-stone-500 text-sm">
+              <p className="text-stone-500 dark:text-stone-400 text-sm">
                 Track reservation progress, access session histories, and manage salon appointments.
               </p>
             </div>
 
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold tracking-wide transition-all shadow-luxury self-start md:self-auto"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 text-xs font-semibold tracking-wide transition-all shadow-luxury self-start md:self-auto"
             >
-              <Sparkles className="w-3.5 h-3.5 text-champagne-400" />
+              <Sparkles className="w-3.5 h-3.5 text-champagne-400 dark:text-stone-950" />
               <span>Book New Treatment</span>
             </Link>
           </div>
@@ -177,31 +177,31 @@ export default function CustomerDashboardPage() {
               </div>
 
               {/* Client Visual Membership & Activity Banner */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-soft grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div className="bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-alabaster-300 dark:border-stone-800 shadow-soft grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                 <div className="md:col-span-7 space-y-4">
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-champagne-100 flex items-center justify-center text-champagne-700">
+                    <div className="w-7 h-7 rounded-full bg-champagne-100 dark:bg-champagne-950/60 flex items-center justify-center text-champagne-700 dark:text-champagne-400">
                       <Crown className="w-4 h-4" />
                     </div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
                       Private Atelier Member
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl font-medium text-espresso-950">
+                  <h3 className="font-serif text-xl font-medium text-espresso-950 dark:text-alabaster-50">
                     Your Reservation Schedule &amp; Priority Standing
                   </h3>
 
-                  <p className="text-xs text-stone-500 leading-relaxed">
-                    You have <span className="font-semibold text-espresso-950">{stats.confirmed}</span> confirmed salon visit(s) scheduled. You can complete secure Stripe payment for any confirmed booking.
+                  <p className="text-xs text-stone-500 dark:text-stone-400 leading-relaxed">
+                    You have <span className="font-semibold text-espresso-950 dark:text-alabaster-100">{stats.confirmed}</span> confirmed salon visit(s) scheduled. You can complete secure Stripe payment for any confirmed booking.
                   </p>
 
                   <div className="space-y-1.5 pt-2">
-                    <div className="flex justify-between text-xs text-stone-500">
+                    <div className="flex justify-between text-xs text-stone-500 dark:text-stone-400">
                       <span>Confirmed Visit Ratio</span>
-                      <span className="font-semibold text-espresso-950">{confirmedPct}%</span>
+                      <span className="font-semibold text-espresso-950 dark:text-alabaster-100">{confirmedPct}%</span>
                     </div>
-                    <div className="w-full h-2 bg-alabaster-200 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-alabaster-200 dark:bg-stone-800 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-emerald-600 rounded-full transition-all duration-700"
                         style={{ width: `${confirmedPct}%` }}
@@ -210,17 +210,17 @@ export default function CustomerDashboardPage() {
                   </div>
                 </div>
 
-                <div className="md:col-span-5 bg-alabaster-50 rounded-2xl p-5 border border-alabaster-200 space-y-3">
-                  <span className="text-[10px] uppercase tracking-wider font-semibold text-stone-400">
+                <div className="md:col-span-5 bg-alabaster-50 dark:bg-stone-800/40 rounded-2xl p-5 border border-alabaster-200 dark:border-stone-800 space-y-3">
+                  <span className="text-[10px] uppercase tracking-wider font-semibold text-stone-400 dark:text-stone-500">
                     Concierge Note
                   </span>
-                  <p className="text-xs text-stone-600 leading-snug">
+                  <p className="text-xs text-stone-600 dark:text-stone-300 leading-snug">
                     Manage your appointments directly from your dashboard or browse active services to schedule a new visit.
                   </p>
                   <div className="pt-2">
                     <Link
                       href="/services"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-champagne-700 hover:text-champagne-800"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-champagne-700 dark:text-champagne-400 hover:text-champagne-800"
                     >
                       <span>Explore Seasonal Menu</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -230,19 +230,19 @@ export default function CustomerDashboardPage() {
               </div>
 
               {/* Recent Bookings Table / List */}
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-soft space-y-6">
+              <div className="bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-alabaster-300 dark:border-stone-800 shadow-soft space-y-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="font-serif text-xl font-medium text-espresso-950">
+                    <h2 className="font-serif text-xl font-medium text-espresso-950 dark:text-alabaster-50">
                       Recent Reservations
                     </h2>
-                    <p className="text-xs text-stone-500">
+                    <p className="text-xs text-stone-500 dark:text-stone-400">
                       Your latest booked treatments and confirmation statuses.
                     </p>
                   </div>
                   <Link
                     href="/dashboard/customer/appointments"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-champagne-700 hover:text-champagne-800"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-champagne-700 dark:text-champagne-400 hover:text-champagne-800"
                   >
                     <span>View All</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -257,7 +257,7 @@ export default function CustomerDashboardPage() {
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs">
                       <thead>
-                        <tr className="border-b border-alabaster-200 text-stone-400 uppercase tracking-wider font-semibold">
+                        <tr className="border-b border-alabaster-200 dark:border-stone-800 text-stone-400 dark:text-stone-500 uppercase tracking-wider font-semibold">
                           <th className="pb-3">Service</th>
                           <th className="pb-3">Date &amp; Slot</th>
                           <th className="pb-3">Price</th>
@@ -266,7 +266,7 @@ export default function CustomerDashboardPage() {
                           <th className="pb-3 text-right">Action</th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-alabaster-200">
+                      <tbody className="divide-y divide-alabaster-200 dark:divide-stone-800">
                         {recentAppointments.map((appt) => {
                           const service =
                             typeof appt.serviceId === 'object'
@@ -282,36 +282,36 @@ export default function CustomerDashboardPage() {
                           return (
                             <tr
                               key={appt._id}
-                              className="hover:bg-alabaster-50/70 transition-colors"
+                              className="hover:bg-alabaster-50/70 dark:hover:bg-stone-800/40 transition-colors"
                             >
                               <td className="py-4 pr-3">
-                                <p className="font-semibold text-espresso-950 text-sm">
+                                <p className="font-semibold text-espresso-950 dark:text-alabaster-100 text-sm">
                                   {service?.serviceName || 'Custom Treatment'}
                                 </p>
-                                <span className="text-[10px] text-stone-500 uppercase tracking-wider">
+                                <span className="text-[10px] text-stone-500 dark:text-stone-400 uppercase tracking-wider">
                                   {service?.category || 'Atelier'}
                                 </span>
                               </td>
-                              <td className="py-4 pr-3 text-stone-600 whitespace-nowrap">
-                                <p className="font-medium text-espresso-900">
+                              <td className="py-4 pr-3 text-stone-600 dark:text-stone-300 whitespace-nowrap">
+                                <p className="font-medium text-espresso-900 dark:text-alabaster-100">
                                   {appt.appointmentDate}
                                 </p>
-                                <p className="text-[11px] text-stone-400">{appt.timeSlot}</p>
+                                <p className="text-[11px] text-stone-400 dark:text-stone-500">{appt.timeSlot}</p>
                               </td>
-                              <td className="py-4 pr-3 font-semibold text-espresso-950">
+                              <td className="py-4 pr-3 font-semibold text-espresso-950 dark:text-alabaster-100">
                                 ${appt.servicePrice}
                               </td>
                               <td className="py-4 pr-3">
                                 {appt.status === 'confirmed' ? (
-                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/40">
                                     Confirmed
                                   </span>
                                 ) : appt.status === 'cancelled' ? (
-                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200">
+                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 border border-rose-200 dark:border-rose-900/40">
                                     Cancelled
                                   </span>
                                 ) : (
-                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
+                                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-900/40">
                                     Pending Review
                                   </span>
                                 )}
@@ -320,8 +320,8 @@ export default function CustomerDashboardPage() {
                                 <span
                                   className={`px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wider ${
                                     isPaid
-                                      ? 'bg-emerald-100 text-emerald-800'
-                                      : 'bg-stone-100 text-stone-600'
+                                      ? 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300'
+                                      : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400'
                                   }`}
                                 >
                                   {isPaid ? 'Paid' : 'Unpaid'}
@@ -331,7 +331,7 @@ export default function CustomerDashboardPage() {
                                 <div className="flex items-center justify-end gap-2">
                                   <button
                                     onClick={() => setSelectedAppointment(appt)}
-                                    className="p-1.5 rounded-lg border border-alabaster-300 hover:bg-alabaster-200 text-stone-700 transition-colors"
+                                    className="p-1.5 rounded-lg border border-alabaster-300 dark:border-stone-700 hover:bg-alabaster-200 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 transition-colors"
                                     title="View Details"
                                   >
                                     <Eye className="w-3.5 h-3.5" />
@@ -340,10 +340,10 @@ export default function CustomerDashboardPage() {
                                   {isPaid && (
                                     <button
                                       onClick={() => setSelectedReceipt(appt)}
-                                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-alabaster-100 hover:bg-alabaster-200 text-espresso-950 text-[11px] font-medium border border-alabaster-300 transition-colors"
+                                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-alabaster-100 dark:bg-stone-800 hover:bg-alabaster-200 dark:hover:bg-stone-700 text-espresso-950 dark:text-alabaster-100 text-[11px] font-medium border border-alabaster-300 dark:border-stone-700 transition-colors"
                                       title="View Digital Receipt"
                                     >
-                                      <Receipt className="w-3 h-3 text-champagne-600" />
+                                      <Receipt className="w-3 h-3 text-champagne-600 dark:text-champagne-400" />
                                       <span>Receipt</span>
                                     </button>
                                   )}
@@ -351,9 +351,9 @@ export default function CustomerDashboardPage() {
                                   {canPay && (
                                     <button
                                       onClick={() => handlePayNow(appt._id)}
-                                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-espresso-900 text-alabaster-100 hover:bg-espresso-800 text-[11px] font-semibold tracking-wide transition-all shadow-sm"
+                                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-espresso-900 text-alabaster-100 hover:bg-espresso-800 dark:bg-champagne-500 dark:text-stone-950 dark:hover:bg-champagne-400 text-[11px] font-semibold tracking-wide transition-all shadow-sm"
                                     >
-                                      <CreditCard className="w-3 h-3 text-champagne-400" />
+                                      <CreditCard className="w-3 h-3 text-champagne-400 dark:text-stone-950" />
                                       <span>Pay Now</span>
                                     </button>
                                   )}
@@ -366,11 +366,11 @@ export default function CustomerDashboardPage() {
                     </table>
                   </div>
                 ) : (
-                  <p className="text-xs text-stone-500 text-center py-8">
+                  <p className="text-xs text-stone-500 dark:text-stone-400 text-center py-8">
                     You haven&apos;t reserved any appointments yet.{' '}
                     <Link
                       href="/services"
-                      className="text-champagne-700 underline font-medium"
+                      className="text-champagne-700 dark:text-champagne-400 underline font-medium"
                     >
                       Browse treatments
                     </Link>

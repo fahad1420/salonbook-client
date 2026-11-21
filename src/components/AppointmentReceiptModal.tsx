@@ -1,10 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Appointment, Service, User } from '@/types';
+import { generateReceiptPDF } from '@/lib/pdfReceipt';
+import { toast } from 'sonner';
 import {
   Sparkles,
   Printer,
+  Download,
+  Loader2,
   X,
   CheckCircle2,
   Calendar,
@@ -45,33 +49,61 @@ export default function AppointmentReceiptModal({
     }
   );
 
+  const [isDownloading, setIsDownloading] = useState(false);
+
   const handlePrint = () => {
     window.print();
   };
 
+  const handleDownloadPDF = () => {
+    setIsDownloading(true);
+    try {
+      generateReceiptPDF(appointment);
+      toast.success('Official PDF receipt downloaded.');
+    } catch (err: any) {
+      toast.error(err.message || 'Failed to generate PDF receipt.');
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-2xl border border-alabaster-300 overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/70 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="relative w-full max-w-xl bg-white dark:bg-espresso-950 rounded-3xl shadow-2xl border border-alabaster-300 dark:border-white/10 overflow-hidden flex flex-col max-h-[90vh]">
         {/* Modal Top Actions (Hidden in Print) */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-alabaster-200 bg-alabaster-50 print:hidden">
-          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-champagne-700">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-alabaster-200 dark:border-white/10 bg-alabaster-50 dark:bg-espresso-900/60 print:hidden">
+          <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Official Booking Receipt</span>
           </div>
 
           <div className="flex items-center gap-2">
             <button
+              onClick={handleDownloadPDF}
+              disabled={isDownloading}
+              type="button"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-champagne-600 hover:bg-champagne-500 text-espresso-950 text-xs font-semibold transition-all shadow-sm"
+              title="Download as official PDF file"
+            >
+              {isDownloading ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              ) : (
+                <Download className="w-3.5 h-3.5" />
+              )}
+              <span>Download PDF</span>
+            </button>
+            <button
               onClick={handlePrint}
               type="button"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-xs font-semibold transition-all shadow-sm dark:bg-espresso-800 dark:hover:bg-espresso-700"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>Print Receipt</span>
+              <span>Print</span>
             </button>
             <button
               onClick={onClose}
               type="button"
-              className="p-1.5 rounded-full text-stone-400 hover:text-espresso-950 hover:bg-alabaster-200 transition-colors"
+              className="p-1.5 rounded-full text-stone-400 hover:text-espresso-950 dark:hover:text-white hover:bg-alabaster-200 dark:hover:bg-espresso-800 transition-colors"
               aria-label="Close"
             >
               <X className="w-4 h-4" />

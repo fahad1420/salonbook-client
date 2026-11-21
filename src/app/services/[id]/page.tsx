@@ -238,7 +238,7 @@ export default function ServiceDetailPage() {
   const isAdminUser = user?.role === 'admin';
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 py-10 md:py-16">
@@ -247,7 +247,7 @@ export default function ServiceDetailPage() {
           <div className="mb-8">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 hover:text-espresso-950 transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-stone-500 hover:text-espresso-950 dark:hover:text-alabaster-50 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Services Catalog</span>
@@ -257,7 +257,7 @@ export default function ServiceDetailPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             {/* Left Column: Service Details & Photo */}
             <div className="lg:col-span-7 space-y-8">
-              <div className="relative h-80 sm:h-[420px] w-full rounded-3xl overflow-hidden border border-alabaster-300 shadow-luxury">
+              <div className="relative h-80 sm:h-[420px] w-full rounded-3xl overflow-hidden border border-alabaster-300 dark:border-stone-800 shadow-luxury">
                 <ServiceImage
                   src={service.image}
                   alt={service.serviceName}
@@ -267,7 +267,7 @@ export default function ServiceDetailPage() {
                   className="object-cover"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-espresso-950 text-xs font-semibold tracking-wider uppercase shadow-soft border border-white/40">
+                  <span className="px-3.5 py-1.5 rounded-full bg-white/95 dark:bg-stone-900/95 backdrop-blur-md text-espresso-950 dark:text-alabaster-50 text-xs font-semibold tracking-wider uppercase shadow-soft border border-white/40 dark:border-stone-700">
                     {service.category}
                   </span>
                 </div>
@@ -278,51 +278,51 @@ export default function ServiceDetailPage() {
                 )}
               </div>
 
-              <div className="bg-white rounded-3xl p-8 border border-alabaster-300 shadow-soft space-y-6">
+              <div className="bg-white dark:bg-stone-900 rounded-3xl p-8 border border-alabaster-300 dark:border-stone-800 shadow-soft space-y-6">
                 <div className="space-y-2">
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-stone-500">
-                    <span className="flex items-center gap-1.5 font-semibold text-espresso-950">
-                      <Clock className="w-4 h-4 text-champagne-600" />
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-medium text-stone-500 dark:text-stone-400">
+                    <span className="flex items-center gap-1.5 font-semibold text-espresso-950 dark:text-alabaster-50">
+                      <Clock className="w-4 h-4 text-champagne-600 dark:text-champagne-400" />
                       {service.duration} Minutes Session
                     </span>
                     <span>&bull;</span>
-                    <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    <span className="text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-full border border-emerald-200 dark:border-emerald-800/40">
                       Active Catalog
                     </span>
                     <span>&bull;</span>
-                    <span className="text-champagne-700 bg-champagne-50 px-2.5 py-0.5 rounded-full border border-champagne-200">
+                    <span className="text-champagne-700 dark:text-champagne-300 bg-champagne-50 dark:bg-champagne-950/40 px-2.5 py-0.5 rounded-full border border-champagne-200 dark:border-champagne-800/40">
                       Scheduled Window
                     </span>
                   </div>
 
-                  <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+                  <h1 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                     {service.serviceName}
                   </h1>
                 </div>
 
                 <div className="pt-2">
-                  <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">
+                  <h2 className="text-xs font-semibold uppercase tracking-wider text-stone-500 dark:text-stone-400 mb-2">
                     Treatment Description
                   </h2>
-                  <p className="text-stone-600 text-base leading-relaxed">
+                  <p className="text-stone-600 dark:text-stone-300 text-base leading-relaxed">
                     {service.description}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-alabaster-200 grid grid-cols-2 gap-4">
+                <div className="pt-4 border-t border-alabaster-200 dark:border-stone-800 grid grid-cols-2 gap-4">
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-stone-400 font-semibold block">
+                    <span className="text-[10px] uppercase tracking-wider text-stone-400 dark:text-stone-500 font-semibold block">
                       Atelier Investment
                     </span>
-                    <p className="font-serif text-3xl font-semibold text-espresso-950 mt-0.5">
+                    <p className="font-serif text-3xl font-semibold text-espresso-950 dark:text-alabaster-50 mt-0.5">
                       ${service.price}
                     </p>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase tracking-wider text-stone-400 font-semibold block">
+                    <span className="text-[10px] uppercase tracking-wider text-stone-400 dark:text-stone-500 font-semibold block">
                       Standard Duration
                     </span>
-                    <p className="text-base font-semibold text-espresso-900 mt-1">
+                    <p className="text-base font-semibold text-espresso-900 dark:text-alabaster-100 mt-1">
                       {service.duration} mins
                     </p>
                   </div>
@@ -332,36 +332,36 @@ export default function ServiceDetailPage() {
 
             {/* Right Column: Appointment Reservation Form with Live Slot Availability */}
             <div className="lg:col-span-5">
-              <div className="sticky top-28 bg-white rounded-3xl p-6 sm:p-8 border border-alabaster-300 shadow-luxury space-y-6">
+              <div className="sticky top-28 bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-alabaster-300 dark:border-stone-800 shadow-luxury space-y-6">
                 <div className="space-y-1.5">
-                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-champagne-700">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-champagne-700 dark:text-champagne-400">
                     <CalendarCheck className="w-3.5 h-3.5" />
                     <span>Reserve Session</span>
                   </div>
-                  <h2 className="font-serif text-2xl font-medium text-espresso-950">
+                  <h2 className="font-serif text-2xl font-medium text-espresso-950 dark:text-alabaster-50">
                     Book Appointment
                   </h2>
-                  <p className="text-stone-500 text-xs">
+                  <p className="text-stone-500 dark:text-stone-400 text-xs">
                     Choose your date to preview real-time salon slot availability.
                   </p>
                 </div>
 
                 {isInactive ? (
-                  <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-xs flex items-start gap-2.5">
-                    <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/40 text-amber-800 dark:text-amber-300 text-xs flex items-start gap-2.5">
+                    <AlertCircle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold">Service Temporarily Unavailable</p>
-                      <p className="mt-0.5 text-amber-700">
+                      <p className="mt-0.5 text-amber-700 dark:text-amber-300">
                         This treatment is currently marked as inactive by the atelier director and cannot be booked at this time.
                       </p>
                     </div>
                   </div>
                 ) : isAdminUser ? (
-                  <div className="p-4 rounded-2xl bg-stone-100 border border-stone-200 text-stone-700 text-xs flex items-start gap-2.5">
+                  <div className="p-4 rounded-2xl bg-stone-100 dark:bg-stone-800/60 border border-stone-200 dark:border-stone-700 text-stone-700 dark:text-stone-300 text-xs flex items-start gap-2.5">
                     <ShieldAlert className="w-4 h-4 text-stone-500 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="font-semibold">Administrator Notice</p>
-                      <p className="mt-0.5 text-stone-600">
+                      <p className="mt-0.5 text-stone-600 dark:text-stone-400">
                         You are logged in as an Administrator. Administrative accounts cannot place customer appointment bookings. Sign in as a customer to test the booking flow.
                       </p>
                     </div>
@@ -371,7 +371,7 @@ export default function ServiceDetailPage() {
                 <form onSubmit={handleBookingSubmit} className="space-y-5">
                   {/* Appointment Date */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                       Appointment Date <span className="text-rose-600">*</span>
                     </label>
                     <div className="relative">
@@ -383,7 +383,7 @@ export default function ServiceDetailPage() {
                         value={appointmentDate}
                         onChange={(e) => setAppointmentDate(e.target.value)}
                         disabled={isInactive || isAdminUser}
-                        className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 outline-none transition-colors disabled:bg-stone-50 disabled:opacity-60"
+                        className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 outline-none transition-colors disabled:bg-stone-50 dark:disabled:bg-stone-800/50 disabled:opacity-60"
                       />
                     </div>
                   </div>
@@ -391,7 +391,7 @@ export default function ServiceDetailPage() {
                   {/* Predefined Time Slot with Live Availability Indicator */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                      <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                         Salon Time Slot <span className="text-rose-600">*</span>
                       </label>
                       {isLoadingSlots ? (
@@ -400,7 +400,7 @@ export default function ServiceDetailPage() {
                           Checking slots...
                         </span>
                       ) : (
-                        <span className="text-[11px] text-emerald-700 font-medium">
+                        <span className="text-[11px] text-emerald-700 dark:text-emerald-400 font-medium">
                           {SALON_TIME_SLOTS.length - bookedSlots.length} of {SALON_TIME_SLOTS.length} slots free
                         </span>
                       )}
@@ -419,31 +419,31 @@ export default function ServiceDetailPage() {
                             onClick={() => setTimeSlot(slot)}
                             className={`flex items-center justify-between p-3.5 rounded-xl text-xs font-medium border transition-all ${
                               isBooked
-                                ? 'border-dashed border-stone-200 bg-stone-100/70 text-stone-400 cursor-not-allowed line-through'
+                                ? 'border-dashed border-stone-200 dark:border-stone-800 bg-stone-100/70 dark:bg-stone-800/30 text-stone-400 dark:text-stone-600 cursor-not-allowed line-through'
                                 : isSelected
-                                ? 'border-champagne-600 bg-champagne-50 text-espresso-950 shadow-soft ring-1 ring-champagne-400'
-                                : 'border-alabaster-300 hover:border-champagne-400 bg-white text-stone-700'
+                                ? 'border-champagne-600 bg-champagne-50 dark:bg-champagne-950/40 text-espresso-950 dark:text-champagne-300 shadow-soft ring-1 ring-champagne-400'
+                                : 'border-alabaster-300 dark:border-stone-700 hover:border-champagne-400 bg-white dark:bg-stone-800 text-stone-700 dark:text-stone-300'
                             } disabled:opacity-60`}
                           >
                             <span className="flex items-center gap-2">
                               <Clock
                                 className={`w-3.5 h-3.5 ${
-                                  isBooked ? 'text-stone-300' : 'text-champagne-600'
+                                  isBooked ? 'text-stone-300 dark:text-stone-600' : 'text-champagne-600 dark:text-champagne-400'
                                 }`}
                               />
-                              <span className={isBooked ? 'line-through text-stone-400' : ''}>
+                              <span className={isBooked ? 'line-through text-stone-400 dark:text-stone-600' : ''}>
                                 {slot}
                               </span>
                             </span>
 
                             {isBooked ? (
-                              <span className="text-[10px] font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-2.5 py-0.5 rounded-full border border-rose-200 no-underline">
+                              <span className="text-[10px] font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider bg-rose-50 dark:bg-rose-950/40 px-2.5 py-0.5 rounded-full border border-rose-200 dark:border-rose-900/40 no-underline">
                                 Booked
                               </span>
                             ) : isSelected ? (
-                              <CheckCircle2 className="w-4 h-4 text-champagne-600" />
+                              <CheckCircle2 className="w-4 h-4 text-champagne-600 dark:text-champagne-400" />
                             ) : (
-                              <span className="text-[10px] text-emerald-600 font-medium">
+                              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-medium">
                                 Available
                               </span>
                             )}
@@ -455,7 +455,7 @@ export default function ServiceDetailPage() {
 
                   {/* Optional Message */}
                   <div className="space-y-1.5">
-                    <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                       Stylist Notes &amp; Preferences{' '}
                       <span className="text-stone-400 font-normal lowercase">(optional)</span>
                     </label>
@@ -465,17 +465,17 @@ export default function ServiceDetailPage() {
                       onChange={(e) => setMessage(e.target.value)}
                       disabled={isInactive || isAdminUser}
                       placeholder="Special allergies, hair texture notes, or consultation requests..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors resize-none disabled:bg-stone-50 disabled:opacity-60"
+                      className="w-full px-4 py-2.5 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors resize-none disabled:bg-stone-50 dark:disabled:bg-stone-800/50 disabled:opacity-60"
                     />
                   </div>
 
                   {/* Price Summary Breakdown */}
-                  <div className="bg-alabaster-100 rounded-2xl p-4 border border-alabaster-300 space-y-2 text-xs">
-                    <div className="flex justify-between text-stone-600">
+                  <div className="bg-alabaster-100 dark:bg-stone-800/60 rounded-2xl p-4 border border-alabaster-300 dark:border-stone-700 space-y-2 text-xs">
+                    <div className="flex justify-between text-stone-600 dark:text-stone-300">
                       <span>Service Fee</span>
                       <span>${service.price}.00</span>
                     </div>
-                    <div className="pt-2 border-t border-alabaster-300 flex justify-between font-semibold text-espresso-950 text-sm">
+                    <div className="pt-2 border-t border-alabaster-300 dark:border-stone-700 flex justify-between font-semibold text-espresso-950 dark:text-alabaster-50 text-sm">
                       <span>Total Due (Upon Confirmation)</span>
                       <span>${service.price}.00</span>
                     </div>
@@ -484,7 +484,7 @@ export default function ServiceDetailPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting || isInactive || isAdminUser}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 font-medium text-sm tracking-wide transition-all shadow-luxury hover:shadow-luxury-hover disabled:opacity-50 disabled:pointer-events-none"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 font-medium text-sm tracking-wide transition-all shadow-luxury hover:shadow-luxury-hover disabled:opacity-50 disabled:pointer-events-none"
                   >
                     {isSubmitting ? (
                       <>
@@ -494,13 +494,13 @@ export default function ServiceDetailPage() {
                     ) : (
                       <>
                         <span>Submit Booking Request</span>
-                        <CheckCircle2 className="w-4 h-4 text-champagne-400" />
+                        <CheckCircle2 className="w-4 h-4 text-champagne-400 dark:text-stone-950" />
                       </>
                     )}
                   </button>
 
-                  <div className="flex items-center gap-2 text-[11px] text-stone-500 justify-center">
-                    <Info className="w-3.5 h-3.5 text-stone-400" />
+                  <div className="flex items-center gap-2 text-[11px] text-stone-500 dark:text-stone-400 justify-center">
+                    <Info className="w-3.5 h-3.5 text-stone-400 dark:text-stone-500" />
                     <span>No charge upon submission. Online payment via Stripe is requested after admin confirmation.</span>
                   </div>
                 </form>

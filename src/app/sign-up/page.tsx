@@ -75,19 +75,19 @@ export default function SignUpPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1 flex items-center justify-center px-4 py-16 sm:px-6 lg:px-8">
-        <div className="w-full max-w-lg space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-alabaster-300 shadow-xl shadow-stone-200/50">
+        <div className="w-full max-w-lg space-y-8 bg-white dark:bg-stone-900 p-8 sm:p-10 rounded-3xl border border-alabaster-300 dark:border-stone-800 shadow-xl shadow-stone-200/50 dark:shadow-none">
           <div className="text-center space-y-2">
             <div className="flex justify-center mb-2">
               <LogoMonogram size={48} />
             </div>
-            <h1 className="font-serif text-3xl font-medium tracking-tight text-espresso-950">
+            <h1 className="font-serif text-3xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
               Create Client Profile
             </h1>
-            <p className="text-stone-500 text-sm">
+            <p className="text-stone-500 dark:text-stone-400 text-sm">
               Join the atelier for priority reservations, customized treatments, and personal stylist consultations.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function SignUpPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Full Name */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                 Full Name <span className="text-rose-600">*</span>
               </label>
               <div className="relative">
@@ -106,14 +106,14 @@ export default function SignUpPage() {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Vivienne Laurent"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
               </div>
             </div>
 
             {/* Email Address */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                 Email Address <span className="text-rose-600">*</span>
               </label>
               <div className="relative">
@@ -124,15 +124,15 @@ export default function SignUpPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="vivienne@example.com"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
               </div>
             </div>
 
             {/* Phone Number */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
-                Phone Number <span className="text-stone-400 lowercase font-normal">(optional)</span>
+              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
+                Phone Number <span className="text-stone-400 dark:text-stone-500 lowercase font-normal">(optional)</span>
               </label>
               <div className="relative">
                 <Phone className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -141,7 +141,7 @@ export default function SignUpPage() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Enter phone number"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
               </div>
             </div>
@@ -149,17 +149,17 @@ export default function SignUpPage() {
             {/* Profile Avatar Mode Toggle */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold uppercase tracking-wider text-espresso-950">
+                <span className="text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                   Profile Avatar
                 </span>
-                <div className="flex items-center gap-1 bg-alabaster-200 p-0.5 rounded-lg text-[11px] font-medium">
+                <div className="flex items-center gap-1 bg-alabaster-200 dark:bg-stone-800 p-0.5 rounded-lg text-[11px] font-medium">
                   <button
                     type="button"
                     onClick={() => setImageInputMode('upload')}
                     className={`px-2 py-0.5 rounded-md transition-colors ${
                       imageInputMode === 'upload'
-                        ? 'bg-white text-espresso-950 shadow-xs'
-                        : 'text-stone-600'
+                        ? 'bg-white dark:bg-stone-700 text-espresso-950 dark:text-alabaster-50 shadow-xs'
+                        : 'text-stone-600 dark:text-stone-400'
                     }`}
                   >
                     ImgBB Upload
@@ -169,8 +169,8 @@ export default function SignUpPage() {
                     onClick={() => setImageInputMode('url')}
                     className={`px-2 py-0.5 rounded-md transition-colors ${
                       imageInputMode === 'url'
-                        ? 'bg-white text-espresso-950 shadow-xs'
-                        : 'text-stone-600'
+                        ? 'bg-white dark:bg-stone-700 text-espresso-950 dark:text-alabaster-50 shadow-xs'
+                        : 'text-stone-600 dark:text-stone-400'
                     }`}
                   >
                     Image URL
@@ -192,14 +192,14 @@ export default function SignUpPage() {
                   value={image}
                   onChange={(e) => setImage(e.target.value)}
                   placeholder="https://images.unsplash.com/..."
-                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full px-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
               )}
             </div>
 
             {/* Password with rules */}
             <div className="space-y-2">
-              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-espresso-950 dark:text-alabaster-50">
                 Password <span className="text-rose-600">*</span>
               </label>
               <div className="relative">
@@ -210,19 +210,19 @@ export default function SignUpPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white text-sm text-espresso-900 placeholder:text-stone-400 outline-none transition-colors"
+                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-alabaster-300 dark:border-stone-700 focus:border-champagne-500 focus:ring-1 focus:ring-champagne-500 bg-white dark:bg-stone-800 text-sm text-espresso-900 dark:text-alabaster-50 placeholder:text-stone-400 dark:placeholder:text-stone-500 outline-none transition-colors"
                 />
               </div>
 
               {/* Password Rules Checklist */}
-              <div className="bg-alabaster-100 p-3 rounded-xl border border-alabaster-300 space-y-1 text-xs">
+              <div className="bg-alabaster-100 dark:bg-stone-800/60 p-3 rounded-xl border border-alabaster-300 dark:border-stone-700 space-y-1 text-xs">
                 <div className="flex items-center gap-1.5">
                   {hasMinLength ? (
                     <Check className="w-3.5 h-3.5 text-emerald-600" />
                   ) : (
                     <X className="w-3.5 h-3.5 text-stone-400" />
                   )}
-                  <span className={hasMinLength ? 'text-emerald-800 font-medium' : 'text-stone-500'}>
+                  <span className={hasMinLength ? 'text-emerald-800 dark:text-emerald-400 font-medium' : 'text-stone-500 dark:text-stone-400'}>
                     At least 6 characters
                   </span>
                 </div>
@@ -232,7 +232,7 @@ export default function SignUpPage() {
                   ) : (
                     <X className="w-3.5 h-3.5 text-stone-400" />
                   )}
-                  <span className={hasUpperCase ? 'text-emerald-800 font-medium' : 'text-stone-500'}>
+                  <span className={hasUpperCase ? 'text-emerald-800 dark:text-emerald-400 font-medium' : 'text-stone-500 dark:text-stone-400'}>
                     At least 1 uppercase letter (A-Z)
                   </span>
                 </div>
@@ -242,7 +242,7 @@ export default function SignUpPage() {
                   ) : (
                     <X className="w-3.5 h-3.5 text-stone-400" />
                   )}
-                  <span className={hasLowerCase ? 'text-emerald-800 font-medium' : 'text-stone-500'}>
+                  <span className={hasLowerCase ? 'text-emerald-800 dark:text-emerald-400 font-medium' : 'text-stone-500 dark:text-stone-400'}>
                     At least 1 lowercase letter (a-z)
                   </span>
                 </div>
@@ -252,7 +252,7 @@ export default function SignUpPage() {
             <button
               type="submit"
               disabled={isSubmitting || !isPasswordValid}
-              className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 font-medium text-sm tracking-wide transition-all shadow-md hover:shadow-lg disabled:opacity-60 disabled:pointer-events-none"
+              className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 font-medium text-sm tracking-wide transition-all shadow-md hover:shadow-lg disabled:opacity-60 disabled:pointer-events-none"
             >
               {isSubmitting ? (
                 <>
@@ -262,7 +262,7 @@ export default function SignUpPage() {
               ) : (
                 <>
                   <span>Create Account</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 dark:text-stone-950" />
                 </>
               )}
             </button>
@@ -270,10 +270,10 @@ export default function SignUpPage() {
 
           <div className="relative my-4">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-alabaster-300" />
+              <div className="w-full border-t border-alabaster-300 dark:border-stone-700" />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-3 text-stone-500">Or register with</span>
+              <span className="bg-white dark:bg-stone-900 px-3 text-stone-500 dark:text-stone-400">Or register with</span>
             </div>
           </div>
 
@@ -281,7 +281,7 @@ export default function SignUpPage() {
             type="button"
             onClick={handleGoogleSignIn}
             disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-alabaster-300 bg-white hover:bg-alabaster-100 text-espresso-900 font-medium text-sm transition-colors shadow-sm"
+            className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl border border-alabaster-300 dark:border-stone-700 bg-white dark:bg-stone-800 hover:bg-alabaster-100 dark:hover:bg-stone-700 text-espresso-900 dark:text-alabaster-100 font-medium text-sm transition-colors shadow-sm"
           >
             <svg className="w-4 h-4" viewBox="0 0 24 24">
               <path
@@ -304,11 +304,11 @@ export default function SignUpPage() {
             <span>Google Profile</span>
           </button>
 
-          <p className="text-center text-xs text-stone-500 pt-2">
+          <p className="text-center text-xs text-stone-500 dark:text-stone-400 pt-2">
             Already registered?{' '}
             <Link
               href="/sign-in"
-              className="font-semibold text-champagne-700 hover:text-champagne-800 underline underline-offset-4"
+              className="font-semibold text-champagne-700 dark:text-champagne-400 hover:text-champagne-800 underline underline-offset-4"
             >
               Sign In to Your Account
             </Link>

@@ -198,27 +198,27 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col bg-alabaster-100">
+    <div className="min-h-screen flex flex-col bg-alabaster-100 dark:bg-stone-950 transition-colors">
       <Navbar />
 
       <main className="flex-1">
         {/* 1. Asymmetric Split Hero Banner */}
-        <section className="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-28 bg-gradient-to-b from-alabaster-200/50 via-alabaster-100 to-alabaster-100 border-b border-alabaster-300">
+        <section className="relative overflow-hidden pt-10 pb-20 md:pt-16 md:pb-28 bg-gradient-to-b from-alabaster-200/50 via-alabaster-100 to-alabaster-100 dark:from-stone-900/50 dark:via-stone-950 dark:to-stone-950 border-b border-alabaster-300 dark:border-stone-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Authentic Feature Badges */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-6 text-xs text-stone-600 font-medium">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-champagne-100/90 text-champagne-700 border border-champagne-300">
-                <CheckCircle2 className="w-3.5 h-3.5 text-champagne-600" />
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mb-6 text-xs text-stone-600 dark:text-stone-400 font-medium">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-champagne-100/90 dark:bg-champagne-950/40 text-champagne-700 dark:text-champagne-300 border border-champagne-300 dark:border-champagne-800/50">
+                <CheckCircle2 className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                 Scheduled Appointments
               </span>
-              <span className="hidden sm:inline-block text-stone-300">•</span>
-              <span className="inline-flex items-center gap-1 text-stone-600">
-                <Calendar className="w-4 h-4 text-champagne-600" />
+              <span className="hidden sm:inline-block text-stone-300 dark:text-stone-700">•</span>
+              <span className="inline-flex items-center gap-1 text-stone-600 dark:text-stone-300">
+                <Calendar className="w-4 h-4 text-champagne-600 dark:text-champagne-400" />
                 Predefined Time Windows
               </span>
-              <span className="hidden sm:inline-block text-stone-300">•</span>
-              <span className="inline-flex items-center gap-1 text-stone-600">
-                <Lock className="w-4 h-4 text-champagne-600" />
+              <span className="hidden sm:inline-block text-stone-300 dark:text-stone-700">•</span>
+              <span className="inline-flex items-center gap-1 text-stone-600 dark:text-stone-300">
+                <Lock className="w-4 h-4 text-champagne-600 dark:text-champagne-400" />
                 Stripe Payment Checkout
               </span>
             </div>
@@ -226,33 +226,33 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
               {/* Hero Copy */}
               <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white text-espresso-900 border border-alabaster-300 text-xs font-semibold tracking-wider uppercase shadow-soft">
-                  <CalendarCheck className="w-3.5 h-3.5 text-champagne-600" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-stone-900 text-espresso-900 dark:text-alabaster-50 border border-alabaster-300 dark:border-stone-800 text-xs font-semibold tracking-wider uppercase shadow-soft">
+                  <CalendarCheck className="w-3.5 h-3.5 text-champagne-600 dark:text-champagne-400" />
                   <span>Salon &amp; Spa Appointment Booking</span>
                 </div>
 
-                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-espresso-950 leading-[1.12]">
+                <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50 leading-[1.12]">
                   Elevate Your Self-Care with{' '}
-                  <span className="italic text-champagne-600">Seamless Atelier</span>{' '}
+                  <span className="italic text-champagne-600 dark:text-champagne-400">Seamless Atelier</span>{' '}
                   Reservations.
                 </h1>
 
-                <p className="text-base sm:text-lg text-stone-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
+                <p className="text-base sm:text-lg text-stone-600 dark:text-stone-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
                   Discover curated salon rituals across 7 dedicated disciplines. Reserve predefined time slots with real-time conflict prevention and secure digital checkout.
                 </p>
 
                 <div className="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                   <Link
                     href="/services"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-espresso-900 hover:bg-espresso-800 text-alabaster-100 text-sm font-semibold tracking-wide transition-all shadow-luxury hover:shadow-luxury-hover hover:-translate-y-0.5"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-espresso-900 hover:bg-espresso-800 dark:bg-champagne-500 dark:hover:bg-champagne-400 text-alabaster-100 dark:text-stone-950 text-sm font-semibold tracking-wide transition-all shadow-luxury hover:shadow-luxury-hover hover:-translate-y-0.5"
                   >
                     <span>Explore Salon Services</span>
-                    <ArrowRight className="w-4 h-4 text-champagne-400" />
+                    <ArrowRight className="w-4 h-4 text-champagne-400 dark:text-stone-950" />
                   </Link>
 
                   <a
                     href="#categories"
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white hover:bg-alabaster-50 text-espresso-900 border border-alabaster-300 text-sm font-semibold tracking-wide transition-all shadow-soft"
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full bg-white dark:bg-stone-900 hover:bg-alabaster-50 dark:hover:bg-stone-800 text-espresso-900 dark:text-alabaster-100 border border-alabaster-300 dark:border-stone-800 text-sm font-semibold tracking-wide transition-all shadow-soft"
                   >
                     <span>Browse Disciplines</span>
                     <ChevronRight className="w-4 h-4 text-stone-400" />
@@ -260,34 +260,34 @@ export default function HomePage() {
                 </div>
 
                 {/* Platform Highlights */}
-                <div className="pt-8 border-t border-alabaster-300 grid grid-cols-3 gap-4 text-left">
+                <div className="pt-8 border-t border-alabaster-300 dark:border-stone-800 grid grid-cols-3 gap-4 text-left">
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-champagne-100 flex items-center justify-center text-champagne-700 flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-champagne-100 dark:bg-champagne-950/60 flex items-center justify-center text-champagne-700 dark:text-champagne-400 flex-shrink-0">
                       <ShieldCheck className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-espresso-950">Review Protocol</p>
-                      <p className="text-[11px] text-stone-500">Admin Confirmation</p>
+                      <p className="text-xs font-semibold text-espresso-950 dark:text-alabaster-100">Review Protocol</p>
+                      <p className="text-[11px] text-stone-500 dark:text-stone-400">Admin Confirmation</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-champagne-100 flex items-center justify-center text-champagne-700 flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-champagne-100 dark:bg-champagne-950/60 flex items-center justify-center text-champagne-700 dark:text-champagne-400 flex-shrink-0">
                       <Clock className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-espresso-950">Set Durations</p>
-                      <p className="text-[11px] text-stone-500">Clear Service Times</p>
+                      <p className="text-xs font-semibold text-espresso-950 dark:text-alabaster-100">Set Durations</p>
+                      <p className="text-[11px] text-stone-500 dark:text-stone-400">Clear Service Times</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-champagne-100 flex items-center justify-center text-champagne-700 flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-champagne-100 dark:bg-champagne-950/60 flex items-center justify-center text-champagne-700 dark:text-champagne-400 flex-shrink-0">
                       <CreditCard className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-espresso-950">Secure Pay</p>
-                      <p className="text-[11px] text-stone-500">Stripe Integration</p>
+                      <p className="text-xs font-semibold text-espresso-950 dark:text-alabaster-100">Secure Pay</p>
+                      <p className="text-[11px] text-stone-500 dark:text-stone-400">Stripe Integration</p>
                     </div>
                   </div>
                 </div>
@@ -296,9 +296,9 @@ export default function HomePage() {
               {/* Framed Editorial Visual */}
               <div className="lg:col-span-5 relative">
                 <div className="relative mx-auto max-w-md lg:max-w-none">
-                  <div className="absolute -top-4 -right-4 w-72 h-72 bg-champagne-200/50 rounded-full blur-3xl -z-10" />
+                  <div className="absolute -top-4 -right-4 w-72 h-72 bg-champagne-200/50 dark:bg-champagne-900/20 rounded-full blur-3xl -z-10" />
 
-                  <div className="relative h-96 sm:h-[480px] w-full rounded-3xl overflow-hidden shadow-luxury border-4 border-white">
+                  <div className="relative h-96 sm:h-[480px] w-full rounded-3xl overflow-hidden shadow-luxury border-4 border-white dark:border-stone-800">
                     <Image
                       src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80"
                       alt="Luxury Salon Interior"
@@ -319,12 +319,12 @@ export default function HomePage() {
                   </div>
 
                   {/* Feature Highlight Card */}
-                  <div className="absolute -bottom-6 -left-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-luxury border border-alabaster-300 max-w-xs hidden sm:block">
-                    <div className="flex items-center gap-2 text-champagne-700 text-xs font-semibold mb-1">
+                  <div className="absolute -bottom-6 -left-6 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md rounded-2xl p-4 shadow-luxury border border-alabaster-300 dark:border-stone-800 max-w-xs hidden sm:block">
+                    <div className="flex items-center gap-2 text-champagne-700 dark:text-champagne-400 text-xs font-semibold mb-1">
                       <CalendarCheck className="w-3.5 h-3.5" />
                       <span>Dedicated Appointment Flow</span>
                     </div>
-                    <p className="text-xs text-espresso-950 leading-snug">
+                    <p className="text-xs text-espresso-950 dark:text-stone-300 leading-snug">
                       Choose your preferred date, lock in an available slot, and receive concierge confirmation.
                     </p>
                   </div>
@@ -335,16 +335,16 @@ export default function HomePage() {
         </section>
 
         {/* 2. Interactive Category Showcase */}
-        <section id="categories" className="py-20 md:py-28 bg-white border-b border-alabaster-300 scroll-mt-10">
+        <section id="categories" className="py-20 md:py-28 bg-white dark:bg-stone-950 border-b border-alabaster-300 dark:border-stone-800 scroll-mt-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-14">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600 dark:text-champagne-400">
                 Service Disciplines
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                 Explore by Salon Category
               </h2>
-              <p className="text-stone-500 text-sm leading-relaxed">
+              <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">
                 Select from our 7 core salon categories to discover active treatments, pricing, and time allocations.
               </p>
             </div>
@@ -364,7 +364,7 @@ export default function HomePage() {
                   <Link
                     key={cat}
                     href={`/services?category=${encodeURIComponent(cat)}`}
-                    className="group relative rounded-2xl overflow-hidden border border-alabaster-300 bg-alabaster-50 shadow-soft hover:shadow-luxury-hover transition-all duration-300 flex flex-col h-[280px]"
+                    className="group relative rounded-2xl overflow-hidden border border-alabaster-300 dark:border-stone-800 bg-alabaster-50 dark:bg-stone-900 shadow-soft hover:shadow-luxury-hover transition-all duration-300 flex flex-col h-[280px]"
                   >
                     <div className="relative h-40 w-full overflow-hidden">
                       <ServiceImage
@@ -378,7 +378,7 @@ export default function HomePage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-espresso-950/80 via-espresso-950/20 to-transparent" />
                       
                       <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-espresso-900 border border-white/40">
+                        <span className="px-2.5 py-1 rounded-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-md text-[10px] uppercase tracking-wider font-semibold text-espresso-900 dark:text-alabaster-100 border border-white/40 dark:border-stone-700">
                           {meta.tag}
                         </span>
                       </div>
@@ -395,15 +395,15 @@ export default function HomePage() {
 
                     <div className="p-4 flex-1 flex flex-col justify-between">
                       <div>
-                        <h3 className="font-serif text-lg font-medium text-espresso-950 group-hover:text-champagne-700 transition-colors line-clamp-1">
+                        <h3 className="font-serif text-lg font-medium text-espresso-950 dark:text-alabaster-100 group-hover:text-champagne-700 dark:group-hover:text-champagne-400 transition-colors line-clamp-1">
                           {cat}
                         </h3>
-                        <p className="text-stone-500 text-xs mt-1 line-clamp-2 leading-relaxed">
+                        <p className="text-stone-500 dark:text-stone-400 text-xs mt-1 line-clamp-2 leading-relaxed">
                           {meta.description}
                         </p>
                       </div>
 
-                      <div className="pt-2 flex items-center gap-1 text-[11px] font-semibold text-champagne-700 uppercase tracking-wider">
+                      <div className="pt-2 flex items-center gap-1 text-[11px] font-semibold text-champagne-700 dark:text-champagne-400 uppercase tracking-wider">
                         <span>Browse Treatments</span>
                         <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                       </div>
@@ -415,25 +415,25 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 3. Curated Featured Services (Dynamic Section 1: 6+ active services from DB) */}
-        <section className="py-20 md:py-28 bg-alabaster-100 border-b border-alabaster-300">
+        {/* 3. Curated Featured Services */}
+        <section className="py-20 md:py-28 bg-alabaster-100 dark:bg-stone-900/40 border-b border-alabaster-300 dark:border-stone-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
               <div className="space-y-2 text-center md:text-left">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600 dark:text-champagne-400">
                   Featured Offerings
                 </span>
-                <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+                <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                   Curated Salon Treatments
                 </h2>
-                <p className="text-stone-500 text-sm max-w-xl">
+                <p className="text-stone-500 dark:text-stone-400 text-sm max-w-xl">
                   Explore active services fetched directly from our database, featuring clear fees, duration schedules, and instant booking links.
                 </p>
               </div>
 
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-espresso-900 text-espresso-900 hover:bg-espresso-900 hover:text-alabaster-100 text-xs font-semibold tracking-wide transition-all shadow-soft"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-espresso-900 dark:border-champagne-500 text-espresso-900 dark:text-champagne-400 hover:bg-espresso-900 hover:text-alabaster-100 dark:hover:bg-champagne-500 dark:hover:text-stone-950 text-xs font-semibold tracking-wide transition-all shadow-soft"
               >
                 <span>View Full Catalog</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -453,8 +453,8 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16 bg-white rounded-3xl border border-alabaster-300 p-8 shadow-soft">
-                <p className="text-stone-600 text-sm">
+              <div className="text-center py-16 bg-white dark:bg-stone-900 rounded-3xl border border-alabaster-300 dark:border-stone-800 p-8 shadow-soft">
+                <p className="text-stone-600 dark:text-stone-400 text-sm">
                   Services are currently being added. Please check back shortly.
                 </p>
               </div>
@@ -463,16 +463,16 @@ export default function HomePage() {
         </section>
 
         {/* 4. How SalonBook Works: 5 Clear Steps */}
-        <section id="how-it-works" className="py-20 md:py-28 bg-white border-b border-alabaster-300 scroll-mt-10">
+        <section id="how-it-works" className="py-20 md:py-28 bg-white dark:bg-stone-950 border-b border-alabaster-300 dark:border-stone-800 scroll-mt-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600 dark:text-champagne-400">
                 Reservation Workflow
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                 How SalonBook Works
               </h2>
-              <p className="text-stone-500 text-sm leading-relaxed">
+              <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">
                 A streamlined five-step booking process engineered for effortless reservations and zero scheduling friction.
               </p>
             </div>
@@ -483,10 +483,10 @@ export default function HomePage() {
                 return (
                   <div
                     key={item.step}
-                    className="relative rounded-3xl border border-alabaster-300 bg-alabaster-50 p-6 space-y-4 shadow-soft hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
+                    className="relative rounded-3xl border border-alabaster-300 dark:border-stone-800 bg-alabaster-50 dark:bg-stone-900 p-6 space-y-4 shadow-soft hover:shadow-luxury-hover transition-all duration-300 flex flex-col justify-between"
                   >
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-espresso-900 text-champagne-400 flex items-center justify-center shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-espresso-900 dark:bg-stone-800 text-champagne-400 flex items-center justify-center shadow-sm">
                         <IconComponent className="w-5 h-5" />
                       </div>
                       <span className="font-serif text-2xl font-bold text-champagne-400">
@@ -495,10 +495,10 @@ export default function HomePage() {
                     </div>
 
                     <div className="space-y-1.5 flex-1">
-                      <h3 className="font-serif text-lg font-semibold text-espresso-950">
+                      <h3 className="font-serif text-lg font-semibold text-espresso-950 dark:text-alabaster-100">
                         {item.title}
                       </h3>
-                      <p className="text-stone-600 text-xs leading-relaxed">
+                      <p className="text-stone-600 dark:text-stone-300 text-xs leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -510,16 +510,16 @@ export default function HomePage() {
         </section>
 
         {/* 5. Why SalonBook: Real Platform Benefits */}
-        <section id="why-salonbook" className="py-20 md:py-28 bg-alabaster-100 border-b border-alabaster-300 scroll-mt-10">
+        <section id="why-salonbook" className="py-20 md:py-28 bg-alabaster-100 dark:bg-stone-900/40 border-b border-alabaster-300 dark:border-stone-800 scroll-mt-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600 dark:text-champagne-400">
                 Platform Excellence
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                 Why SalonBook
               </h2>
-              <p className="text-stone-500 text-sm leading-relaxed">
+              <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">
                 Experience transparent pricing, verified slot reservations, and seamless self-service management.
               </p>
             </div>
@@ -530,18 +530,18 @@ export default function HomePage() {
                 return (
                   <div
                     key={benefit.title}
-                    className={`p-8 rounded-3xl bg-white border border-alabaster-300 space-y-4 shadow-soft hover:shadow-luxury-hover hover:border-champagne-300 transition-all duration-300 ${
+                    className={`p-8 rounded-3xl bg-white dark:bg-stone-900 border border-alabaster-300 dark:border-stone-800 space-y-4 shadow-soft hover:shadow-luxury-hover hover:border-champagne-300 dark:hover:border-champagne-800 transition-all duration-300 ${
                       idx === 4 ? 'md:col-span-2 lg:col-span-1' : ''
                     }`}
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-espresso-900 text-champagne-400 flex items-center justify-center shadow-sm">
+                    <div className="w-12 h-12 rounded-2xl bg-espresso-900 dark:bg-stone-800 text-champagne-400 flex items-center justify-center shadow-sm">
                       <IconComponent className="w-6 h-6" />
                     </div>
                     <div className="space-y-2">
-                      <h3 className="font-serif text-xl font-medium text-espresso-950">
+                      <h3 className="font-serif text-xl font-medium text-espresso-950 dark:text-alabaster-100">
                         {benefit.title}
                       </h3>
-                      <p className="text-stone-600 text-sm leading-relaxed">
+                      <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed">
                         {benefit.description}
                       </p>
                     </div>
@@ -553,16 +553,16 @@ export default function HomePage() {
         </section>
 
         {/* 6. Salon Standards & Operating Policies */}
-        <section id="standards" className="py-20 md:py-28 bg-white border-b border-alabaster-300 scroll-mt-10">
+        <section id="standards" className="py-20 md:py-28 bg-white dark:bg-stone-950 border-b border-alabaster-300 dark:border-stone-800 scroll-mt-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto space-y-3 mb-16">
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600">
+              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-600 dark:text-champagne-400">
                 Operating Guidelines
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950">
+              <h2 className="font-serif text-3xl sm:text-4xl font-medium tracking-tight text-espresso-950 dark:text-alabaster-50">
                 Platform Policies &amp; Client Standards
               </h2>
-              <p className="text-stone-500 text-sm leading-relaxed">
+              <p className="text-stone-500 dark:text-stone-400 text-sm leading-relaxed">
                 Clear booking expectations, administrative review protocol, and self-service cancellation rules.
               </p>
             </div>
@@ -573,15 +573,15 @@ export default function HomePage() {
                 return (
                   <div
                     key={policy.title}
-                    className="p-8 rounded-3xl bg-alabaster-50 border border-alabaster-300 space-y-4 hover:border-champagne-400 transition-colors shadow-soft"
+                    className="p-8 rounded-3xl bg-alabaster-50 dark:bg-stone-900 border border-alabaster-300 dark:border-stone-800 space-y-4 hover:border-champagne-400 dark:hover:border-champagne-700 transition-colors shadow-soft"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-espresso-900 text-champagne-400 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-2xl bg-espresso-900 dark:bg-stone-800 text-champagne-400 flex items-center justify-center">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <h3 className="font-serif text-xl font-medium text-espresso-950">
+                    <h3 className="font-serif text-xl font-medium text-espresso-950 dark:text-alabaster-100">
                       {policy.title}
                     </h3>
-                    <p className="text-stone-600 text-sm leading-relaxed">
+                    <p className="text-stone-600 dark:text-stone-300 text-sm leading-relaxed">
                       {policy.description}
                     </p>
                   </div>
@@ -590,7 +590,7 @@ export default function HomePage() {
             </div>
 
             {/* Real Platform Capability Facts */}
-            <div className="bg-espresso-950 text-white rounded-3xl p-8 sm:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border border-espresso-800 shadow-luxury">
+            <div className="bg-espresso-950 dark:bg-stone-900 text-white rounded-3xl p-8 sm:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border border-espresso-800 dark:border-stone-800 shadow-luxury">
               <div className="space-y-1">
                 <p className="font-serif text-3xl sm:text-4xl font-semibold text-champagne-400">
                   7

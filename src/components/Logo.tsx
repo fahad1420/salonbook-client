@@ -124,7 +124,7 @@ export default function Logo({
         <div className="flex flex-col select-none">
           <span
             className={`font-serif ${titleSizes[size]} font-semibold tracking-tight leading-none ${
-              isLight ? 'text-white' : 'text-espresso-950'
+              isLight ? 'text-white' : 'text-espresso-950 dark:text-alabaster-50'
             }`}
           >
             Salon
@@ -133,7 +133,7 @@ export default function Logo({
           {showSubtitle && (
             <span
               className={`${subtitleSizes[size]} tracking-[0.25em] uppercase font-semibold mt-1 ${
-                isLight ? 'text-stone-400' : 'text-stone-500'
+                isLight ? 'text-stone-400' : 'text-stone-500 dark:text-stone-400'
               }`}
             >
               Atelier &amp; Spa
