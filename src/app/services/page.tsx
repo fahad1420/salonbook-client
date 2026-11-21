@@ -144,7 +144,7 @@ function ServicesContent() {
               Browse Salon &amp; Spa Treatments
             </h1>
             <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
-              Explore our comprehensive rituals, filter by discipline, and reserve your private session with certified master artists.
+              Explore our salon services, filter by category, and reserve an available appointment time slot.
             </p>
           </header>
 

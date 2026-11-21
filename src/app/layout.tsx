@@ -6,7 +6,7 @@ import { AuthProvider } from '@/context/AuthContext';
 export const metadata: Metadata = {
   title: 'SalonBook — Luxury Salon & Spa Appointment Booking',
   description:
-    'Experience bespoke beauty artistry and restorative spa therapies. Reserve your private session with certified European master stylists.',
+    'Book salon and spa appointments with transparent pricing and real-time slot scheduling.',
   icons: {
     icon: '/icon.svg',
   },

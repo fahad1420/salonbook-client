@@ -93,9 +93,8 @@ export default function AppointmentReceiptModal({
                 </span>
               </div>
               <p className="text-[11px] text-stone-500 leading-snug">
-                Haute Coiffure &amp; Restorative Wellness Atelier<br />
-                450 Madison Avenue, Penthouse Level, New York, NY 10022<br />
-                +1 (212) 555-8900 &bull; concierge@salonbook.com
+                Salon &amp; Spa Appointment Booking Platform<br />
+                Digital Reservation &amp; Payment Confirmation Receipt
               </p>
             </div>
 

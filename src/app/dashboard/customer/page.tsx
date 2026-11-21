@@ -215,7 +215,7 @@ export default function CustomerDashboardPage() {
                     Concierge Note
                   </span>
                   <p className="text-xs text-stone-600 leading-snug">
-                    Need to reschedule or update color formulas? Contact our Madison Avenue front desk at <span className="font-medium text-espresso-950">+1 (212) 555-8900</span>.
+                    Manage your appointments directly from your dashboard or browse active services to schedule a new visit.
                   </p>
                   <div className="pt-2">
                     <Link
