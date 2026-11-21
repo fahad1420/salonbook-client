@@ -56,8 +56,24 @@ High-end, bespoke appointment booking platform for **SalonBook**, designed with 
 - **Financial Ledger:** Stripe transaction records with masked session IDs and printable digital receipts.
 - **Director Profile:** Administrator profile management.
 
-### 5. Printable / Downloadable Digital Booking Receipt Modal
-- Available for any confirmed/paid appointment with itemized pricing, schedule allocation, customer details, and a dedicated `window.print()` layout.
+### 5. Printable & Downloadable Digital Booking Receipts
+- **Downloadable PDF Receipt:** Client-side vector PDF generation using `jspdf` via `generateReceiptPDF()`, featuring the architectural SB monogram, unique receipt serial number, full appointment specifications, breakdown of services, client contact details, and Stripe reference ID.
+- **Dedicated Print View:** Modal with clean print CSS layout (`window.print()`) for physical archival.
+- Strictly restricted to confirmed & paid reservations from both Customer and Admin appointments views and the payment success screen.
+
+### 6. Luxury Dark / Light Theme Switching
+- **Atelier Dark Mode:** Tailored obsidian/espresso (`#121110`, `#141210`) dark mode palette with burnished champagne gold (`#C59B6D`) accents and off-white alabaster (`#FAF7F2`) text.
+- **Zero Flash of Unstyled Theme (FOUT):** Inline `<script>` execution in `<head>` inspecting `localStorage` and `prefers-color-scheme`.
+- Seamlessly covers every page, modal, form input, table row, dropdown menu, sidebar, and footer.
+
+---
+
+## Evaluation Demo Credentials
+| Role | Email | Password | Primary Feature Access |
+|---|---|---|---|
+| **Administrator** | `admin@salonbook.com` | `Password123!` | Executive KPIs, Service CRUD, ImgBB Uploads, Appointment Confirmation/Cancellation, Customer Suspension (`isBlocked`), Financial Ledger |
+| **Customer** | `vivienne@example.com` | `Password123!` | Treatment Discovery, Predefined Slot Reservations, Real-Time Conflict Checks, Stripe Checkout, PDF Receipt Download |
+| **Google Account** | Any Google Account | Google OAuth | One-click instant OAuth sign-in to customer portal |
 
 ---
 
