@@ -19,6 +19,17 @@ function SignInContent() {
   const searchParams = useSearchParams();
   const redirectUrl = searchParams.get('redirect');
 
+  React.useEffect(() => {
+    const errorParam = searchParams.get('error');
+    if (errorParam) {
+      const message =
+        errorParam === 'state_mismatch'
+          ? 'Authentication state mismatch or verification expired. Please try again.'
+          : `Sign-in notice: ${errorParam.replace(/_/g, ' ')}`;
+      toast.error(message);
+    }
+  }, [searchParams]);
+
   const handleRoleRedirect = (role: 'admin' | 'customer') => {
     if (redirectUrl) {
       router.push(redirectUrl);

@@ -37,6 +37,7 @@ export async function request<T = any>(
     : `${BASE_URL}${endpoint.startsWith('/') ? endpoint : `/${endpoint}`}`;
 
   const response = await fetch(url, {
+    credentials: 'include',
     ...options,
     headers,
   });

@@ -42,14 +42,47 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const refreshUser = useCallback(async () => {
-    const storedToken = typeof window !== 'undefined' ? localStorage.getItem('salonbook_token') : null;
+    // 1. Check for token in URL query params (passed back from OAuth redirect)
+    let activeToken = typeof window !== 'undefined' ? localStorage.getItem('salonbook_token') : null;
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlToken = urlParams.get('token');
+      if (urlToken) {
+        activeToken = urlToken;
+        localStorage.setItem('salonbook_token', urlToken);
+        setToken(urlToken);
+        urlParams.delete('token');
+        const remainingQuery = urlParams.toString();
+        const cleanUrl = window.location.pathname + (remainingQuery ? `?${remainingQuery}` : '');
+        window.history.replaceState({}, '', cleanUrl);
+      }
+    }
+
+    if (activeToken) {
+      setToken(activeToken);
+    }
 
     try {
-      if (storedToken) {
-        setToken(storedToken);
+      // If we have an active token, verify directly with /api/auth/me
+      if (activeToken) {
+        try {
+          const res = await api.get<{ success: boolean; user: User }>('/auth/me');
+          if (res.success && res.user) {
+            if (res.user.isBlocked) {
+              toast.error('Your account has been suspended by salon administration.');
+              handleLogout();
+              return;
+            }
+            setUser(res.user);
+            localStorage.setItem('salonbook_user', JSON.stringify(res.user));
+            return;
+          }
+        } catch (err) {
+          console.warn('Bearer token verification failed, checking session:', err);
+        }
       }
 
-      // Check Better Auth session first (especially after OAuth callback)
+      // Check Better Auth session cookie
       try {
         const session = await authClient.getSession();
         if (session?.data?.user) {
