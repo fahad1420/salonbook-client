@@ -1,29 +1,62 @@
 import React from 'react';
 import Link from 'next/link';
 import Logo from '@/components/Logo';
-import { ShieldCheck, MapPin, Clock, CalendarCheck, Lock, CreditCard } from 'lucide-react';
+import { ShieldCheck, MapPin, Clock, CalendarCheck, Lock, CreditCard, Mail, Phone, Instagram, Facebook, Twitter } from 'lucide-react';
 
 export default function Footer() {
   return (
     <footer className="bg-espresso-950 dark:bg-[#0c0b0a] text-stone-300 border-t border-espresso-800 dark:border-white/10 mt-auto transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Column 1 – Brand Identity */}
+          {/* Column 1 – Brand Identity & Social Links */}
           <div className="space-y-4">
             <Logo variant="light" size="md" />
             <p className="text-stone-400 text-sm leading-relaxed">
               Curating salon and spa treatments with transparent pricing, predefined time allocations, and convenient digital reservations.
             </p>
-            <div className="pt-2 flex items-center gap-2 text-xs text-champagne-400 font-medium">
+            <div className="pt-1 flex items-center gap-2 text-xs text-champagne-400 font-medium">
               <ShieldCheck className="w-4 h-4 text-champagne-400 shrink-0" />
               <span>Dedicated Atelier Booking Platform</span>
             </div>
+            {/* Social Media Links */}
+            <div className="pt-2">
+              <span className="block text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">Connect With Us</span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-8 h-8 rounded-full bg-espresso-900 border border-espresso-800 flex items-center justify-center text-stone-400 hover:text-champagne-400 hover:border-champagne-500/50 transition-colors"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-8 h-8 rounded-full bg-espresso-900 border border-espresso-800 flex items-center justify-center text-stone-400 hover:text-champagne-400 hover:border-champagne-500/50 transition-colors"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://twitter.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                  className="w-8 h-8 rounded-full bg-espresso-900 border border-espresso-800 flex items-center justify-center text-stone-400 hover:text-champagne-400 hover:border-champagne-500/50 transition-colors"
+                >
+                  <Twitter className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
 
-          {/* Column 2 – Atelier Locations (Verified & Upcoming) */}
+          {/* Column 2 – Atelier Locations, Hours & Contact Information */}
           <div className="space-y-3">
             <h3 className="font-serif text-white text-base font-semibold tracking-wide uppercase text-xs">
-              Atelier Locations
+              Atelier &amp; Contact
             </h3>
             <div className="space-y-4 text-sm text-stone-400">
               <div className="space-y-1">
@@ -40,23 +73,23 @@ export default function Footer() {
                 </p>
               </div>
 
-              <div className="space-y-1 pt-1 border-t border-espresso-900 dark:border-white/5">
-                <div className="flex items-center gap-1.5 text-stone-300 font-medium text-xs">
-                  <MapPin className="w-3.5 h-3.5 text-stone-500 shrink-0" />
-                  <span>Atelier II (Upcoming)</span>
-                </div>
-                <p className="text-xs text-stone-400 leading-relaxed pl-5">
-                  Second location expansion in progress
-                  <br />
-                  <span className="text-[11px] text-champagne-400/90 italic">
-                    Address to be updated upon launch
-                  </span>
-                </p>
-              </div>
-
-              <div className="flex items-center gap-1.5 text-xs text-stone-400 pt-1">
+              <div className="flex items-center gap-1.5 text-xs text-stone-400">
                 <Clock className="w-3.5 h-3.5 text-champagne-400 shrink-0" />
                 <span>Mon – Sat: 9:00 AM – 7:00 PM</span>
+              </div>
+
+              {/* Direct Salon Contact Details */}
+              <div className="pt-2 border-t border-espresso-900 dark:border-white/5 space-y-2">
+                <div className="flex items-center gap-2 text-xs text-stone-300">
+                  <Phone className="w-3.5 h-3.5 text-champagne-400 shrink-0" />
+                  <span>+1 (800) 555-7256</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-stone-300">
+                  <Mail className="w-3.5 h-3.5 text-champagne-400 shrink-0" />
+                  <a href="mailto:concierge@salonbook.com" className="hover:text-champagne-400 transition-colors">
+                    concierge@salonbook.com
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -134,7 +167,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer Bottom */}
+        {/* Footer Bottom with Copyright */}
         <div className="mt-12 pt-8 border-t border-espresso-800 dark:border-white/10 text-xs text-stone-400 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>&copy; 2026 SalonBook. All rights reserved.</p>
           <div className="flex items-center gap-6">
